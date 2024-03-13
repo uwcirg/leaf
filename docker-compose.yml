@@ -24,10 +24,8 @@ services:
       - mssql
     volumes:
       - ./src/server:/app
-      - ${KEYS}:/.keys
+      - ${KEYS:-./src/server/keys}:/.keys
     environment:
-      LEAF_JWT_CERT: ${JWT_CERT}
-      LEAF_JWT_KEY: ${JWT_KEY}
       LEAF_JWT_KEY_PW: ${JWT_KEY_PW}
       LEAF_APP_DB: ${APP_DB}
       LEAF_CLIN_DB: ${CLIN_DB}
