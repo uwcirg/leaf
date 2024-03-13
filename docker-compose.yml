@@ -2,10 +2,9 @@ version: "3"
 services:
 
   mssql:
-    build:
-      context: ./src/db/build
-      args:
-        sapw: ${DB_SA_PW}
+    image: mcr.microsoft.com/mssql/server:${MSSQL_IMAGE_TAG:-2017-latest}
+    environment:
+      ACCEPT_EULA: "Y"
     volumes:
       - leaf-mssql:/var/opt/mssql
     networks:
