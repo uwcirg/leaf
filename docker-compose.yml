@@ -6,14 +6,10 @@ services:
       context: ./src/db/build
       args:
         sapw: ${DB_SA_PW}
-    ports:
-      - 1433:1433
     volumes:
       - leaf-mssql:/var/opt/mssql
     networks:
-      local:
-        aliases:
-          - mssql
+      - internal
 
   coreapi:
     build:
@@ -30,9 +26,7 @@ services:
       LEAF_APP_DB: ${APP_DB}
       LEAF_CLIN_DB: ${CLIN_DB}
     networks:
-      local:
-        aliases:
-          - coreapi
+      - internal
 
   node:
     build:
@@ -43,14 +37,10 @@ services:
       - coreapi
     volumes:
       - ./src/ui-client:/app
-    networks:
-      local:
-        aliases:
-          - node
 
 volumes:
   leaf-mssql:
 
 networks:
-  local:
-    driver: bridge
+  # internal network for backing services
+  internal:
