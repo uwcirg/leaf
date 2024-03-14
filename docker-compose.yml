@@ -11,6 +11,12 @@ services:
       - ./src/db/build/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh:ro
       - ./src/db/build/configure-db.sh:/usr/local/bin/configure-db.sh:ro
       - ./src/db/build/setup.sql:/opt/mssql/setup.sql:ro
+
+      - ./src/db/build/LeafDB.Schema.sql:/docker-entrypoint-initdb.d/00LeafDB.Schema.sql:ro
+      - ./src/db/build/LeafDB.Init.sql:/docker-entrypoint-initdb.d/01LeafDB.Init.sql:ro
+
+      # TODO load LeafDB.GEMs.sql
+      # https://github.com/uwrit/leaf-scripts/blob/master/GEMs/LeafDB.GEMs.sql
     entrypoint: /usr/local/bin/docker-entrypoint.sh
     command: /opt/mssql/bin/sqlservr
     networks:
