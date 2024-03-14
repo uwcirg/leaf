@@ -21,6 +21,7 @@ if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     exit 0
 fi
 
+configure-db.sh &
 
 
 echo $cmdname complete
