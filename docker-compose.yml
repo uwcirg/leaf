@@ -9,6 +9,8 @@ services:
     volumes:
       - leaf-mssql:/var/opt/mssql
       - ./src/db/build/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh:ro
+      - ./src/db/build/configure-db.sh:/usr/local/bin/configure-db.sh:ro
+      - ./src/db/build/setup.sql:/opt/mssql/setup.sql:ro
     entrypoint: /usr/local/bin/docker-entrypoint.sh
     command: /opt/mssql/bin/sqlservr
     networks:
