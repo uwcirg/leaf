@@ -8,6 +8,9 @@ services:
       SA_PASSWORD: Th3PA55--8zz
     volumes:
       - leaf-mssql:/var/opt/mssql
+      - ./src/db/build/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh:ro
+    entrypoint: /usr/local/bin/docker-entrypoint.sh
+    command: /opt/mssql/bin/sqlservr
     networks:
       - internal
 
