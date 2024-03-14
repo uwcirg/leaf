@@ -28,7 +28,6 @@ services:
     depends_on:
       - mssql
     volumes:
-      - ./src/server:/app
       - ${KEYS:-./src/server/keys}:/.keys
     environment:
       LEAF_JWT_KEY_PW: ${JWT_KEY_PW}
@@ -42,9 +41,6 @@ services:
       context: ./src/ui-client
     depends_on:
       - coreapi
-    volumes:
-      - ./src/ui-client:/app
-
 volumes:
   leaf-mssql:
 
