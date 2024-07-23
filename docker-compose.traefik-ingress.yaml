@@ -1,0 +1,30 @@
+version: "3.4"
+services:
+  node:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.node-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`)
+      - traefik.http.routers.node-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.node-${COMPOSE_PROJECT_NAME}.tls=true
+      - traefik.http.routers.node-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      # Leaf frontend does not EXPOSE the ports it listens on, requiring explicit traefik configuration
+      - traefik.http.services.node-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=3000
+    networks:
+      - ingress
+
+  coreapi:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.coreapi-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && PathPrefix(`/api`)
+      - traefik.http.routers.coreapi-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.coreapi-${COMPOSE_PROJECT_NAME}.tls=true
+      - traefik.http.routers.coreapi-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      # Leaf API does not EXPOSE the ports it listens on, requiring explicit traefik configuration
+      - traefik.http.services.coreapi-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=5001
+    networks:
+      - ingress
+networks:
+  # ingress network
+  ingress:
+    external: true
+    name: external_web
