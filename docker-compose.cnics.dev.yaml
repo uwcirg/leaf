@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  cnics-db:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: cnics@CIRG
+      MYSQL_DATABASE: cnics
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: cnics@CIRG
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - internal
+volumes:
+  mysql-data: {}
