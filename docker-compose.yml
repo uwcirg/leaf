@@ -1,0 +1,46 @@
+version: "3"
+services:
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:${MSSQL_IMAGE_TAG:-2017-latest}
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Th3PA55--8zz
+    volumes:
+      - leaf-mssql:/var/opt/mssql
+    networks:
+      - internal
+
+  coreapi:
+    build:
+      context: ./src/server
+    ports:
+      - 5001:5001
+    depends_on:
+      - mssql
+    volumes:
+      - ./src/server:/app
+      - ${KEYS:-./src/server/keys}:/.keys
+    environment:
+      LEAF_JWT_KEY_PW: ${JWT_KEY_PW}
+      LEAF_APP_DB: Server=mssql,1433;Database=LeafDB;uid=sa;Password=Th3PA55--8zz
+      LEAF_CLIN_DB: ${CLIN_DB}
+    networks:
+      - internal
+
+  node:
+    build:
+      context: ./src/ui-client
+    ports:
+      - 3000:3000
+    depends_on:
+      - coreapi
+    volumes:
+      - ./src/ui-client:/app
+
+volumes:
+  leaf-mssql:
+
+networks:
+  # internal network for backing services
+  internal:
