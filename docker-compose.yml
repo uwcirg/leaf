@@ -14,9 +14,10 @@ services:
 
       - ./src/db/build/LeafDB.Schema.sql:/docker-entrypoint-initdb.d/00LeafDB.Schema.sql:ro
       - ./src/db/build/LeafDB.Init.sql:/docker-entrypoint-initdb.d/01LeafDB.Init.sql:ro
-
-      # TODO load LeafDB.GEMs.sql
+      # stored in separate uwrit/leaf-scripts repo, must be present at startup
       # https://github.com/uwrit/leaf-scripts/blob/master/GEMs/LeafDB.GEMs.sql
+      - ./src/db/build/LeafDB.GEMs.sql:/docker-entrypoint-initdb.d/02LeafDB.GEMs.sql:ro
+
     entrypoint: /usr/local/bin/docker-entrypoint.sh
     command: /opt/mssql/bin/sqlservr
     networks:
