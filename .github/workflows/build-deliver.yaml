@@ -1,0 +1,38 @@
+# docker continuous delivery
+# build docker images and push to configured repo, with tags to match branches and git tags
+---
+name: Build & Deliver
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # create a separate job for frontend and backend builds
+        include:
+          - leaf_service: api
+            build_path: ./src/server
+
+          - leaf_service: frontend
+            build_path: ./src/ui-client
+    steps:
+      - name: Checkout git commit
+        uses: actions/checkout@main
+
+      - name: Publish to GitHub Container Registry
+        # TODO: pin to hash
+        uses: elgohr/Publish-Docker-Github-Action@main
+        with:
+          # build a docker image for each service
+          name: ${{ github.repository }}-${{ matrix.leaf_service }}
+          context: ${{ matrix.build_path }}
+
+          registry: ghcr.io
+          # GitHub actor
+          username: ${{ github.actor }}
+
+          # GitHub access token
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+          # create docker image tags to match git tags
+          tag_names: true
