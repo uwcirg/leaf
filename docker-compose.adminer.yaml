@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+  adminer:
+    image: adminer
+    command:
+      - php
+      - -S
+      # workaround broken ipv6
+      - 0.0.0.0:8080
+      - -t
+      - /var/www/html
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.adminer-${COMPOSE_PROJECT_NAME}.rule=Host(`adminer.${LEAF_DOMAIN}`)
+      - traefik.http.routers.adminer-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.adminer-${COMPOSE_PROJECT_NAME}.tls=true
+      - traefik.http.routers.adminer-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+    networks:
+      - ingress
+      - internal
