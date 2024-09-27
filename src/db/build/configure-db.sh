@@ -30,7 +30,7 @@ fi
 
 result=$(sqlcmd -b -S localhost -U sa -P "$SA_PASSWORD" -Q"IF EXISTS (SELECT 1 FROM sys.databases WHERE [name] = N'LeafDB')print 'EXISTS'")
 if [ "$result" = EXISTS ]; then
-    echo DB exists; skipping initialization
+    echo "DB exists; skipping initialization"
     exit 0
 fi
 
