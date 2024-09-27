@@ -24,6 +24,7 @@ services:
       - internal
 
   coreapi:
+    image: ghcr.io/uwcirg/leaf-api:${LEAF_API_IMAGE_TAG:-latest}
     build:
       context: ./src/server
     depends_on:
@@ -38,6 +39,7 @@ services:
       - internal
 
   node:
+    image: ghcr.io/uwcirg/leaf-frontend:${LEAF_FRONTEND_IMAGE_TAG:-latest}
     build:
       context: ./src/ui-client
     depends_on:
