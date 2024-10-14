@@ -9,6 +9,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY . /app
 RUN npm install
 
+EXPOSE 3000
 CMD [ "npm", "start" ]
 
 #COPY build /app/build
