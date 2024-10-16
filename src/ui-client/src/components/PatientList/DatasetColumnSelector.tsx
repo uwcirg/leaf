@@ -127,14 +127,14 @@ export default class DatasetColumnSelector extends React.PureComponent<Props, St
         if (type === PatientListDatasetSummaryType.Quantitative) {
             return (
                 <p>This is a <span className={c}>numeric</span> dataset, and the columns here represent statistical summaries. 
-                    To drill down to actual raw data values, click on a patient in the patient list.
+                    To drill down to actual raw data values, click on a participant in the participant list.
                 </p>
             );
         }
         else {
             return (
                 <p>This is a <span className={c}>non-numeric</span> dataset, and the columns here show a count of the total rows of data and
-                    the earliest and most recent values. To drill down to actual raw data values, click on a patient in the patient list.
+                    the earliest and most recent values. To drill down to actual raw data values, click on a participant in the participant list.
                 </p>
             );
         }

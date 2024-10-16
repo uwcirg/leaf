@@ -73,7 +73,7 @@ export class GlobalPanelFilterRow extends React.PureComponent<Props> {
                         </Container>
                         <p className={`${c}-subtext`}>
                             If 'true', the global panel filter will be used as part of the inclusion criteria for the query. If 'false', any 
-                            patients found will be excluded instead.
+                            participants found will be excluded instead.
                         </p>
                     </Col>
                 </Row>

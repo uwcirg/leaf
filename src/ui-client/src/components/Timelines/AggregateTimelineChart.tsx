@@ -151,7 +151,7 @@ export default class AggregateTimelineChart extends React.Component<Props, State
                 <div className={c}>
                     <span className={`${c}-count`}>{count.toLocaleString()}</span>
                     <span className={`${c}-denom`}>/{denom.toLocaleString()}</span>
-                    <span> patients </span>
+                    <span> participants </span>
                     <span className={`${c}-subtext`}>(</span>
                     <span className={`${c}-percent`}>{pct}%</span>
                     <span className={`${c}-subtext`}>)</span>

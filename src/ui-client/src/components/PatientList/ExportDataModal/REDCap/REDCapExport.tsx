@@ -59,8 +59,8 @@ export default class REDCapExport extends React.PureComponent<Props,State> {
             {!isExporting &&
                 <div className={`${c}-description`}>
                     <p>
-                        The REDCap Project Creation tool allows you to create a brand-new REDCap Project based on the data in your Patient List. 
-                        Leaf will export all of your datasets and patient data, and only you will have access to the new Project.
+                        The REDCap Project Creation tool allows you to create a brand-new REDCap Project based on the data in your Participant List. 
+                        Leaf will export all of your datasets and participant data, and only you will have access to the new Project.
                     </p>
                     <p>
                         Your project will export to <a href={redcapInstanceUrl} target="_blank" rel='noopener noreferrer'>{redcapInstanceUrl}</a>

@@ -75,9 +75,9 @@ export default class NetworkHealthResponder extends React.PureComponent<Props> {
 
     private formatPatientCount = (totalPatients?: number): string => {
         if (!totalPatients) return '';
-        if (totalPatients < 1000) { return `${totalPatients} patients`; }
-        if (totalPatients < 10000) { return `${formatSmallNumber(totalPatients)} patients`; }
-        return `${formatLargeNumber(totalPatients)} patients`;
+        if (totalPatients < 1000) { return `${totalPatients} participants`; }
+        if (totalPatients < 10000) { return `${formatSmallNumber(totalPatients)} participants`; }
+        return `${formatLargeNumber(totalPatients)} participants`;
     }
 
     private handleClick = () => {

@@ -83,7 +83,7 @@ class Timelines extends React.Component<Props, State> {
             return (
                 <div className={`${c}-error`}>
                     <p>
-                    Sorry, your administrator has configured Leaf to not show timelines for cohorts of {auth.config.cohort.lowCellMaskingThreshold} patients or less.
+                    Sorry, your administrator has configured Leaf to not show timelines for cohorts of {auth.config.cohort.lowCellMaskingThreshold} participants or less.
                     </p>
                 </div>
             );

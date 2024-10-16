@@ -29,7 +29,7 @@ export const RowCount = (props: Props) => {
             <span className={`${c}-rowcount`}>{formatSmallNumber(totalPatients)} 
                 {!isIdentified &&
                 <span> de-identified</span>}
-                <span> patients</span>
+                <span> participants</span>
             </span> 
             <span> with </span>
             <span className={`${c}-rowcount`}>{formatSmallNumber(totalPatients + totalDatapoints)} rows</span>
@@ -38,13 +38,13 @@ export const RowCount = (props: Props) => {
             {/* Total Displayed Patients less than Total in Cohort */}
             {totalPatients !== totalCohortPatients &&
             <div className={`${c}-info`}>
-                <div className={`${c}-info-inner`}>Why can't I see data for all {formatSmallNumber(totalCohortPatients)} patients?
+                <div className={`${c}-info-inner`}>Why can't I see data for all {formatSmallNumber(totalCohortPatients)} participants?
 
                     {/* Single Node - export limit */}
                     {!isFederated && totalCohortPatients > exportLimit &&
                     <div className={`${c}-info-detail`}>
                         <span>Your administrator has limited viewing and exporting to </span>
-                        <span className={`${c}-info-emphasis`}>{formatSmallNumber(exportLimit)} patients at a time</span> 
+                        <span className={`${c}-info-emphasis`}>{formatSmallNumber(exportLimit)} participants at a time</span> 
                         <span>, which is less than the total number in your cohort.</span>
                     </div>
                     }
@@ -52,15 +52,15 @@ export const RowCount = (props: Props) => {
                     {/* Single Node - missing patients */}
                     {!isFederated && totalPatients < totalCohortPatients && totalCohortPatients < exportLimit &&
                     <div className={`${c}-info-detail`}>
-                        <span>The Leaf server returned demographic data for less patients than were included in the original cohort. </span>
-                        <span>This usually indicates that demographic data are missing for these patients.</span>
+                        <span>The Leaf server returned demographic data for less participants than were included in the original cohort. </span>
+                        <span>This usually indicates that demographic data are missing for these participants.</span>
                     </div>
                     }
 
                     {/* Federated */}
                     {isFederated &&
                     <div className={`${c}-info-detail`}>
-                        <span>One or more of the Leaf servers you are querying may be limiting the total amount of patients you are able to view.</span>
+                        <span>One or more of the Leaf servers you are querying may be limiting the total amount of participants you are able to view.</span>
                     </div>
                     }
                 </div>
@@ -77,8 +77,8 @@ export const RowCount = (props: Props) => {
                             This means that all dates have been randomly shifted a certain amount of time, and identifiers such as MRNs and names have been removed.
                         </p>
                         <p>
-                            Note: While the amount of time shifted is different between patients, the 
-                            <span className={`${c}-info-emphasis`}> date-shift value for a given patient is consistent</span>
+                            Note: While the amount of time shifted is different between participants, the 
+                            <span className={`${c}-info-emphasis`}> date-shift value for a given participant is consistent</span>
                             , so the relative age at an event is preserved.
                         </p>
                     </div>

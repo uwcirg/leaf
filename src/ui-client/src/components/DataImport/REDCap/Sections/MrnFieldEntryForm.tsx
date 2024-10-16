@@ -30,8 +30,8 @@ export default class MrnFieldEntryForm extends React.PureComponent<Props> {
                     Great! Leaf successfully found your REDCap project.
                 </p>
                 <p>
-                    <strong>Next, select the REDCap field which represents patient identifiers (e.g., an MRN). </strong>
-                    <strong>Leaf will use these values to link patients in the clinical database to your REDCap patients.</strong>
+                    <strong>Next, select the REDCap field which represents participant identifiers (e.g., an MRN). </strong>
+                    <strong>Leaf will use these values to link participants in the clinical database to your REDCap participants.</strong>
                 </p>
                 <MrnFieldSearchBox 
                     redCap={redCap} 
