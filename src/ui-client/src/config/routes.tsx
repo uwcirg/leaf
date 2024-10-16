@@ -36,7 +36,7 @@ interface SubRouteConfig {
 
 const findPatients = (): RouteConfig => {
     return {   
-        display: 'Find Patients', 
+        display: 'Explore Data',
         icon: <FiSearch />,
         index: Routes.FindPatients,
         path: '/', 
