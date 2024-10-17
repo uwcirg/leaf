@@ -96,8 +96,8 @@ export default class ContactModal extends React.PureComponent<Props,State> {
                             type="textarea"
                             onChange={this.handleQuestionChange}
                             placeholder={
-                                "- How many patients have visited the emergency room and had a diagnosis of type 2 diabetes in the same visit?\n" +
-                                "- How many patients had medication orders for betapace and previously had an QT Interval over 500 in the past 12 months?\n" +
+                                "- How many participants have visited the emergency room and had a diagnosis of type 2 diabetes in the same visit?\n" +
+                                "- How many participants had medication orders for betapace and previously had an QT Interval over 500 in the past 12 months?\n" +
                                 "- How many have had a creatinine test greater than 1.2 in the past 30 days, and what were their previous diagnoses?"
                             }
                             spellCheck={false}

@@ -109,10 +109,10 @@ export class DatasetEditor extends React.PureComponent<Props,State> {
                                     {/* Explanation */}
                                     <WhatsThis 
                                         question={'What is a Dataset?'}
-                                        body={`Datasets are the row-level data (and associated SQL queries) for display in the Patient List. The 'Basic Demographics'
-                                               Dataset is a special required Dataset which populates the Visualize and inital Patient List screens. Additional Datasets 
+                                        body={`Datasets are the row-level data (and associated SQL queries) for display in the Participant List. The 'Basic Demographics'
+                                               Dataset is a special required Dataset which populates the Visualize and inital Participant List screens. Additional Datasets 
                                                can by added by specifying a SQL query (i.e., SELECT... FROM... WHERE...) to retrieve expected fields. Leaf will automatically 
-                                               compute per-patient summary statistics and append columns to the Patient List.`}
+                                               compute per-participant summary statistics and append columns to the Participant List.`}
                                     />
                                 </div>
                                 }
@@ -123,7 +123,7 @@ export class DatasetEditor extends React.PureComponent<Props,State> {
                                     data.datasets.demographicsDataset.unsaved && 
                                     !currentDataset &&
                                 <div className={`${c}-start`}>
-                                    <p>It looks like you haven't created a Basic Demographics query to populate the Visualize and Patient List screens.</p>
+                                    <p>It looks like you haven't created a Basic Demographics query to populate the Visualize and Participant List screens.</p>
                                     <p>
                                         <span className='link-span' onClick={this.handleInitialBasicDemographicsSetupClick}>
                                             Click here to start creating a SQL query to return demographics data.

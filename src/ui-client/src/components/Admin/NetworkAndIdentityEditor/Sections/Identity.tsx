@@ -56,7 +56,7 @@ export class Identity extends React.PureComponent<Props> {
                     <Col md={6}>
                         <Input
                             changeHandler={changeHandler} propName={'totalPatients'} value={identity.totalPatients}
-                            label='Total Patients' subLabel='Approximate number of total patients' type='number'
+                            label='Total Participants' subLabel='Approximate number of total participants' type='number'
                         />
                         <Input 
                             changeHandler={changeHandler} propName={'primaryColor'} value={identity.primaryColor} forceValidation={forceValidation}

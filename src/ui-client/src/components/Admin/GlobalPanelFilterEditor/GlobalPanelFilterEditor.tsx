@@ -62,7 +62,7 @@ export class GlobalPanelFilterEditor extends React.PureComponent<Props,State> {
                     <WhatsThis 
                         question={'What is a Global Panel Filter?'}
                         body={`Global Panel Filters are additional logic that are added to users' queries which users have no control over, and can be 
-                               applied to users logged in for QI, Research, or in all cases. Global Panel Filters are typically used to exclude patients 
+                               applied to users logged in for QI, Research, or in all cases. Global Panel Filters are typically used to exclude participants 
                                who have not consented to having their data used for research (for users in Research mode), or excluding VIPs, etc.`}
                     />
                 </div>

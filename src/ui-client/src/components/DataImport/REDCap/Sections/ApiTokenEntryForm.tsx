@@ -25,8 +25,8 @@ export default class ApiTokenEntryForm extends React.PureComponent<Props> {
         return (
             <REDCapImportSection>
                 <p>
-                    The Leaf REDCap Project Import tool allows you to copy project data directly from REDCap into Leaf, linking patients in REDCap 
-                    to the same patients available in Leaf. Start by entering your REDCap Project API Token.
+                    The Leaf REDCap Project Import tool allows you to copy project data directly from REDCap into Leaf, linking participants in REDCap 
+                    to the same participants available in Leaf. Start by entering your REDCap Project API Token.
                 </p>
                 <p>
                     <strong>Your REDCap data will only be visible to you and other users already able to access the Project.</strong>

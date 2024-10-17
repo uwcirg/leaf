@@ -78,7 +78,7 @@ export default class CohortSql extends React.PureComponent<Props, State> {
                         <span className={`${c}-sql-count`}>
                             <span> - </span>
                             <strong>{d.countResults.value.toLocaleString()}</strong>
-                            <span> patients</span>
+                            <span> participants</span>
                         </span>
                         <span className={`${c}-sql-close`} onClick={toggle}>✖</span>
                     </div>

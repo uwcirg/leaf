@@ -39,7 +39,7 @@ export class Display extends React.PureComponent<Props> {
                 />
                 <Input 
                     changeHandler={changeHandler} propName={'uiDisplayPatientCount'} value={adminConcept!.uiDisplayPatientCount}
-                    label='Patient Count' type='number' subLabel='Total patient count displayed next to name'
+                    label='Participant Count' type='number' subLabel='Total participant count displayed next to name'
                 />
                 <Input 
                     changeHandler={changeHandler} propName={'uiDisplayUnits'} value={adminConcept!.uiDisplayUnits}

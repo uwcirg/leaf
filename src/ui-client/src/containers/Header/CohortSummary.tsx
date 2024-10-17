@@ -120,9 +120,9 @@ export class CohortSummary extends React.Component<Props> {
     }
 
     private getTrailingText = (plusMinus: number, withinLowCellThreshold: boolean) => {
-        let text = ' patients';
-        if (withinLowCellThreshold) { text = ' patients or less'; }
-        else if (plusMinus > 0)     { text = ` +/- ${plusMinus} patients`; }
+        let text = ' participants';
+        if (withinLowCellThreshold) { text = ' participants or less'; }
+        else if (plusMinus > 0)     { text = ` +/- ${plusMinus} participants`; }
 
         return <span className="cohort-summary-count-patients">{text}</span>
     }

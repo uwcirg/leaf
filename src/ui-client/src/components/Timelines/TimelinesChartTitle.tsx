@@ -58,10 +58,10 @@ export default class TimelinesChartTitle extends React.Component<Props> {
 
                 {/* (limited to n patients) */}
                 {patientCount > exportLimit &&
-                <div className={`${emphClass} ${c}-cohort-limit`}>(limited to {exportLimit} patients)
+                <div className={`${emphClass} ${c}-cohort-limit`}>(limited to {exportLimit} participants)
                     <div className={`${c}-cohort-limit-info`}>
-                        <span>Your administrator has limited exports of patient data to</span> 
-                        <span className={emphClass}>{exportLimit} patients.</span>
+                        <span>Your administrator has limited exports of participant data to</span> 
+                        <span className={emphClass}>{exportLimit} participants.</span>
                         <br></br>
                         <span>Leaf extracted a</span>
                         <span className={emphClass}>simple random sample</span>

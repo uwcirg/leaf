@@ -125,7 +125,7 @@ export default class LearnMoreButton extends React.PureComponent<Props,State> {
                                 interval={0} 
                                 axisLine={false} 
                                 tickLine={false} 
-                                label={{ value: 'Unique patients by Year', position: 'bottom', className:`${c}-axis-label` }}/>
+                                label={{ value: 'Unique participants by Year', position: 'bottom', className:`${c}-axis-label` }}/>
                             <Bar 
                                 barSize={28}
                                 dataKey="patientCount" 

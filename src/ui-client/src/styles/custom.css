@@ -1,4 +1,8 @@
 /* Header Logo */
+#header-container .title {
+    margin-left: 8px;
+    font-size: 1.8rem;
+}
 .header-content-side .header-title {
  
     /* Example
@@ -118,5 +122,11 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
     /* Example
     background-color: transparent;
     */
+}
+
+/* Attestation modal */
+.attestation-modal-wrap .attestation-title {
+    margin-left: 4px;
+    font-size: 2rem;
 }
  

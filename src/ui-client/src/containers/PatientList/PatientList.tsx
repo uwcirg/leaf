@@ -92,7 +92,7 @@ class PatientList extends React.PureComponent<Props, State> {
             return (
                 <div className={`${c}-error`}>
                     <p>
-                        Sorry, your administrator has configured Leaf to not show patient lists for cohorts of {auth.config.cohort.lowCellMaskingThreshold} patients or less.
+                        Sorry, your administrator has configured Leaf to not show participant lists for cohorts of {auth.config.cohort.lowCellMaskingThreshold} participants or less.
                     </p>
                 </div>
             );
@@ -115,7 +115,7 @@ class PatientList extends React.PureComponent<Props, State> {
             return (
                 <div className={`${c}-error`}>
                     <p>
-                        Whoops! An error occurred while loading the patient list.
+                        Whoops! An error occurred while loading the participant list.
                         We are sorry for the inconvenience. Please contact your Leaf administrator if this error continues.
                     </p>
                 </div>

@@ -21,8 +21,8 @@ export default class CohortTooLargeBox extends React.PureComponent<Props> {
         return (
             <div className={className}>
                 <p>
-                    Whoops! Leaf can't show visualizations or patient lists for a cohort this large.
-                    Your Leaf administrator has only configured Leaf to display up to <span>{formatSmallNumber(cacheLimit)}</span> patients.
+                    Whoops! Leaf can't show visualizations or participant lists for a cohort this large.
+                    Your Leaf administrator has only configured Leaf to display up to <span>{formatSmallNumber(cacheLimit)}</span> participants.
                 </p>
             </div>
         );
