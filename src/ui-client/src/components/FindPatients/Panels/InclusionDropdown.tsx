@@ -48,8 +48,8 @@ export default class InclusionDropdown extends React.PureComponent<Props, State>
         // Set the text and options to display, depending on inclusion state and
         // whether it is the first panel or not
         if (isFirst) { 
-            opts = [ 'Patients Who', 'Not Patients Who' ];
-            displayText = isInclusionCriteria ? 'Patients Who' : 'Not Patients Who';
+            opts = [ 'Participants Who', 'Not Participants Who' ];
+            displayText = isInclusionCriteria ? 'Participants Who' : 'Not Participants Who';
         }
         else {
             opts = [ 'And', 'And Not' ];
@@ -83,7 +83,7 @@ export default class InclusionDropdown extends React.PureComponent<Props, State>
     private selectItem = (item: any) => {
         const { index, inclusionDropdownType, panel, handlers } = this.props;
         const text = item.target.innerText;
-        const include = text === 'Patients Who' || text === 'And' ? true : false;
+        const include = text === 'Participants Who' || text === 'And' ? true : false;
 
         // Update state
         if (inclusionDropdownType === INCLUSION_DROPDOWN_TYPE.PANEL) {

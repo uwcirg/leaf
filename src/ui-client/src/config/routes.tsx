@@ -76,7 +76,7 @@ const timelines = (): RouteConfig => {
 };
 const patientList = (): RouteConfig => { 
     return {
-        display: 'Patient List', 
+        display: 'Participant List', 
         icon: <MdPerson />,
         index: Routes.PatientList,
         path: '/patientList', 
