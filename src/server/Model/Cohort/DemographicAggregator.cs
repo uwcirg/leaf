@@ -89,12 +89,20 @@ namespace Model.Cohort
                 AgeByGenderData = AgeBreakdown,
                 LanguageByHeritageData = LanguageByHeritage,
                 ReligionData = Religion,
-                NihRaceEthnicityData = NihRaceEthnicity
+                NihRaceEthnicityData = NihRaceEthnicity,
+                TestData = null
             };
         }
 
         readonly static string[] femaleSynonyms = { "f", "female" };
         readonly static string[] maleSynonyms = { "m", "male" };
+        readonly static string[] cisWomanSynonyms = { "ciswoman", "cis-woman" };
+
+
+        bool IsCisWoman(PatientDemographic patient)
+        {
+            return cisWomanSynonyms.Any(s => s.Equals(patient.Gender, StringComparison.InvariantCultureIgnoreCase));
+        }
 
         bool IsFemale(PatientDemographic patient)
         {

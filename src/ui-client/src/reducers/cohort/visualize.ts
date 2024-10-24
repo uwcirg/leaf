@@ -14,17 +14,17 @@ export const defaultVisualizationState = (): VisualizationState => {
         demographics: {
             ageByGenderData: {
                 buckets: {
-                    '1-9': { females: 0, males: 0, others: 0 },
-                    '10-17': { females: 0, males: 0, others: 0 },
-                    '18-24': { females: 0, males: 0, others: 0 },
-                    '25-34': { females: 0, males: 0, others: 0 },
-                    '35-44': { females: 0, males: 0, others: 0 },
-                    '45-54': { females: 0, males: 0, others: 0 },
-                    '55-64': { females: 0, males: 0, others: 0 },
-                    '65-74': { females: 0, males: 0, others: 0 },
-                    '75-84': { females: 0, males: 0, others: 0 },
-                    '<1': { females: 0, males: 0, others: 0 },
-                    '>84': { females: 0, males: 0, others: 0 }
+                    '1-9': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '10-17': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '18-24': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0 },
+                    '25-34': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0 },
+                    '35-44': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '45-54': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0 },
+                    '55-64': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0 },
+                    '65-74': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '75-84': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '<1': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0},
+                    '>84': { females: 0, males: 0, others: 0, cisman: 0,  ciswoman: 0, transman: 0, transwoman: 0, fab: 0, mab: 0 }
                 }
             },
             binarySplitData: [],
