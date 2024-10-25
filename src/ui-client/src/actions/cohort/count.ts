@@ -169,14 +169,20 @@ const getDemographics = () => {
                     fetchDemographics(getState(), nr, queryId, cancelSource)
                         .then(
                             async demResponse => {
+
+                                const cloneResponse = JSON.parse(JSON.stringify(demResponse));
                                 
                                 // Make sure query hasn't been reset
                                 if (getState().cohort.count.state !== CohortStateType.LOADED) { return; }
                                 atLeastOneSucceeded = true;
+                                console.log(" original ", cloneResponse.data);
                                 const demographics = demResponse.data as DemographicDTO;
-                                console.log("original ", demResponse.data, " demo data ", demographics)
+                                console.log(" demo data ", demographics);
+                                const genders = [...new Set(demographics.patients.map(o => o.gender))];
+                                const genderData = Object.fromEntries(genders.map(gender => [gender, demographics.patients.filter(o => o.gender === gender).length]));
+                                console.log("genderData ", genderData)
 
-                                dispatch(setNetworkVisualizationData(nr.id, demographics.statistics));
+                                dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients, genderData: genderData}));
                                 getPatientListFromNewBaseDataset(nr.id, demographics.patients, dispatch, getState);
 
                                 if (demographics.columnNames) {

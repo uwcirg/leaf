@@ -60,12 +60,6 @@ export interface AgeByGenderBucket {
     [key: string]: number;
     females: number;
     males: number;
-    ciswoman: number;
-    cisman: number;
-    transman: number;
-    transwoman: number;
-    mab: number;
-    fab: number;
     others: number;
 }
 

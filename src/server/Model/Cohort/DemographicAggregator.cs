@@ -89,20 +89,12 @@ namespace Model.Cohort
                 AgeByGenderData = AgeBreakdown,
                 LanguageByHeritageData = LanguageByHeritage,
                 ReligionData = Religion,
-                NihRaceEthnicityData = NihRaceEthnicity,
-                TestData = null
+                NihRaceEthnicityData = NihRaceEthnicity
             };
         }
 
         readonly static string[] femaleSynonyms = { "f", "female" };
         readonly static string[] maleSynonyms = { "m", "male" };
-        readonly static string[] cisWomanSynonyms = { "ciswoman", "cis-woman" };
-
-
-        bool IsCisWoman(PatientDemographic patient)
-        {
-            return cisWomanSynonyms.Any(s => s.Equals(patient.Gender, StringComparison.InvariantCultureIgnoreCase));
-        }
 
         bool IsFemale(PatientDemographic patient)
         {
@@ -276,6 +268,11 @@ namespace Model.Cohort
                 gender = GenderSplit.Right;
                 increment = (bucket) => { bucket.Males++; };
             }
+            else if (IsCisWoman(patient))
+            {
+                gender = new BinarySplit { Label = "ciswoman", Value = 0 };
+                increment = (bucket) => { bucket.Ciswoman++; };
+            }
 
             var boxed = patient.Age;
             if (boxed.HasValue)
@@ -286,7 +283,7 @@ namespace Model.Cohort
                 var bucket = AgeToBucket(age);
                 increment(bucket);
             }
-
+            console.log("gender ? ", gender)
             if (gender != null)
             {
                 gender.Value++;

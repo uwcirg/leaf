@@ -11,11 +11,5 @@ namespace Model.Cohort
         public int Females { get; set; }
         public int Males { get; set; }
         public int Others { get; set; }
-        public int Cisman { get; set;}
-        public int Ciswoman { get; set;}
-        public int Transwoman { get; set;}
-        public int Transman { get; set;}
-        public int Mab { get; set;}
-        public int Fab { get; set;}
     }
 }

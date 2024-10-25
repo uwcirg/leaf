@@ -13,6 +13,7 @@ import { AgeByGender } from './AgeByGender';
 import { Binary } from './Binary';
 import { LanguageByHeritage } from './LanguageByHeritage';
 import { Religion } from './Religion';
+import { Gender} from './Gender';
 import { NihRaceEthnicityGenderTable } from './NihRaceEthnicityGenderTable';
 
 export interface Props {
@@ -25,7 +26,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
     private delayIncrementMs = 600;
 
     public render() {
-        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData } = this.props.cohort.visualization.demographics;
+        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData } = this.props.cohort.visualization.demographics;
         const colWidth = this.props.width / 2;
         const getDelay = (i: number): number => i * this.delayIncrementMs;
 
@@ -33,11 +34,18 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
             <Container className="visualize-demographic-container aggregate" fluid={true}>
                 <Row>
                     <Col lg={6} md={12} className="visualization-agebygender-container">
-                        <SectionHeader headerText="Current Age By Gender" />
+                        {/* <SectionHeader headerText="Current Age By Gender" />
                         <AgeByGender 
                             data={ageByGenderData}
                             delay={getDelay(0)}
                             height={this.props.height} 
+                            width={colWidth}
+                        /> */}
+                        <SectionHeader headerText="Gender" />
+                        <Gender 
+                            counts={genderData}
+                            delay={getDelay(0)}
+                            height={this.props.height}
                             width={colWidth}
                         />
                     </Col>
