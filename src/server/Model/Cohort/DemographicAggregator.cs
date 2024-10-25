@@ -268,11 +268,6 @@ namespace Model.Cohort
                 gender = GenderSplit.Right;
                 increment = (bucket) => { bucket.Males++; };
             }
-            else if (IsCisWoman(patient))
-            {
-                gender = new BinarySplit { Label = "ciswoman", Value = 0 };
-                increment = (bucket) => { bucket.Ciswoman++; };
-            }
 
             var boxed = patient.Age;
             if (boxed.HasValue)
@@ -283,7 +278,7 @@ namespace Model.Cohort
                 var bucket = AgeToBucket(age);
                 increment(bucket);
             }
-            console.log("gender ? ", gender)
+
             if (gender != null)
             {
                 gender.Value++;
