@@ -128,7 +128,7 @@ export class Gender extends React.PureComponent<Props, State> {
       mab: "nonbinary/other MAB",
     }[val];
     if (displayValue) return displayValue;
-    return "other";
+    return val??"other";
   };
 
   private color = (i: number, colors: string[]): string => {
