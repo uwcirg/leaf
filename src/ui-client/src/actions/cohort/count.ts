@@ -169,20 +169,34 @@ const getDemographics = () => {
                     fetchDemographics(getState(), nr, queryId, cancelSource)
                         .then(
                             async demResponse => {
-
-                                const cloneResponse = JSON.parse(JSON.stringify(demResponse));
-                                
+  
                                 // Make sure query hasn't been reset
                                 if (getState().cohort.count.state !== CohortStateType.LOADED) { return; }
                                 atLeastOneSucceeded = true;
-                                console.log(" original ", cloneResponse.data);
                                 const demographics = demResponse.data as DemographicDTO;
+                                const getCategoryData = (category:string, patientData:[] = []) => {
+                                    if (!category || !patientData || !patientData.length) return null;
+                                    const matchedData = [...new Set(patientData.map(o => o[category]))];
+                                    console.log("matched data ", matchedData.filter(o => !!o));
+                                    if (!matchedData.length) return null;
+                                    const getEntries = (category:string, data:[]) => Object.fromEntries(matchedData.filter(c => !!c).map(c => [c, data.filter(o => {
+                                        console.log(o[category], c);
+                                        return o[category] === c}).length]))
+                                    return getEntries(category, patientData);
+                                };
+                               
                                 console.log(" demo data ", demographics);
-                                const genders = [...new Set(demographics.patients.map(o => o.gender))];
-                                const genderData = Object.fromEntries(genders.map(gender => [gender, demographics.patients.filter(o => o.gender === gender).length]));
-                                console.log("genderData ", genderData)
+                                // const genders = [...new Set(demographics.patients.map(o => o.gender))];
+                                // const genderData = Object.fromEntries(genders.map(gender => [gender, demographics.patients.filter(o => o.gender === gender).length]));
+                                // console.log("genderData ", genderData)
+                                let categoryData = {};
+                                ["gender", "sex", "race"].forEach(category => {
+                                    categoryData[`${category}Data`] = getCategoryData(category, demographics.patients);
+                                });
 
-                                dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients, genderData: genderData}));
+                                console.log("category data ", categoryData)
+
+                                dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients, ...categoryData}));
                                 getPatientListFromNewBaseDataset(nr.id, demographics.patients, dispatch, getState);
 
                                 if (demographics.columnNames) {

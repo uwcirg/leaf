@@ -30,8 +30,8 @@ interface State {
   useDelay: boolean;
 }
 
-export class Gender extends React.PureComponent<Props, State> {
-  private className = "visualization-gender";
+export class Age extends React.PureComponent<Props, State> {
+  private className = "visualization-age";
   private maxWidth = 800;
   private defaultDataLength = 20;
 
@@ -44,15 +44,15 @@ export class Gender extends React.PureComponent<Props, State> {
   }
 
   public render() {
-    const config = visualizationConfig.demographics.gender;
-    const { height, width, counts, delay } = this.props;
+    const config = visualizationConfig.demographics.age;
+    const { height, width, patientData, delay } = this.props;
     const { showAll, useDelay } = this.state;
     const c = this.className;
     const del = useDelay ? delay : 0;
     const w = width > this.maxWidth ? this.maxWidth : width;
 
-    if (!counts) return <div style={{margin: "24px"}}>No data available</div>;
-    let data = Object.entries(counts)
+    if (!patientData) return <div style={{margin: "24px"}}>No data available</div>;
+    let data = Object.entries(this.formatData(patientData))
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
@@ -61,7 +61,7 @@ export class Gender extends React.PureComponent<Props, State> {
       data = data.slice(0, this.defaultDataLength);
     }
 
-    console.log("data ", data);
+    console.log(" age data ", data);
     return (
       <div className={`${c}-column`} style={{ height, width: w }}>
         {/* Show all toggle */}
@@ -88,10 +88,9 @@ export class Gender extends React.PureComponent<Props, State> {
             <BarChart
               data={data}
               margin={{ top: 30, right: 30, left: 10, bottom: 5 }}
-              layout="vertical"
             >
-              <XAxis type="number" allowDecimals={false} hide={true}/>
-              <YAxis dataKey="key" type="category" interval={0} width={150} />
+              <XAxis dataKey="key" />
+              <YAxis />
               <Bar
                 animationBegin={del}
                 barSize={config.barSize}
@@ -104,12 +103,7 @@ export class Gender extends React.PureComponent<Props, State> {
                 <LabelList
                   dataKey="value"
                   formatter={this.formatNumber}
-                  position="right"
-                />
-                <LabelList
-                  dataKey="key"
-                  formatter={this.formatKey}
-                  position="left"
+                  position="top"
                 />
               </Bar>
             </BarChart>
@@ -120,17 +114,17 @@ export class Gender extends React.PureComponent<Props, State> {
   }
 
   private formatNumber = (val: any) => val.toLocaleString();
-  private formatKey = (val: string) => {
-    const displayValue = {
-      cisman: "cis-man",
-      ciswoman: "cis-woman",
-      transwoman: "trans-woman",
-      transman: "trans-man",
-      fab: "nonbinary/other FAB",
-      mab: "nonbinary/other MAB",
-    }[String(val).toLowerCase().replace(/[-_]/g, "")];
-    if (displayValue) return displayValue;
-    return val??"other";
+  private formatData = (data: []) => {
+    if (!data) return null;
+    const ageData = data.filter(o => !!o.age).map(o => o.age);
+    let bracketData = {};
+    bracketData["< 20"] = ageData.filter(n => parseInt(n) < 20).length;
+    bracketData["20 - 29"] = ageData.filter(n => parseInt(n) >= 20 && parseInt(n) < 30).length;
+    bracketData["30 - 39"] = ageData.filter(n => parseInt(n) >= 30 && parseInt(n) < 40).length;
+    bracketData["40 - 49"] = ageData.filter(n => parseInt(n) >= 40 && parseInt(n) < 49).length;
+    bracketData["50 - 59"] = ageData.filter(n => parseInt(n) >= 50 && parseInt(n) < 60).length;
+    bracketData[">= 60"] = ageData.filter(n => parseInt(n) >= 60).length;
+    return bracketData;
   };
 
   private color = (i: number, colors: string[]): string => {

@@ -90,7 +90,6 @@ class Visualize extends React.Component<Props, State> {
         let completedResponders = 0;
         const c = 'visualize';
         const { cohort, responders, auth } = this.props;
-        console.log("cohort ", cohort)
         const demogHeight = 400;
         const respPadding = 200;
         const data: any = [];

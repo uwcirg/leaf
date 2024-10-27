@@ -154,6 +154,7 @@ namespace Services.Cohort
                 AddressState = reader.GetNullableString(Plan.AddressState?.Index),
                 Ethnicity = reader.GetNullableString(Plan.Ethnicity?.Index),
                 Gender = reader.GetNullableString(Plan.Gender?.Index),
+                Sex = reader.GetNullableString(Plan.Sex?.Index),
                 Language = reader.GetNullableString(Plan.Language?.Index),
                 MaritalStatus = reader.GetNullableString(Plan.MaritalStatus?.Index),
                 Race = reader.GetNullableString(Plan.Race?.Index),
@@ -164,7 +165,8 @@ namespace Services.Cohort
                 BirthDate = reader.GetNullableDateTime(Plan.BirthDate?.Index),
                 DeceasedDateTime = reader.GetNullableDateTime(Plan.DeathDate?.Index),
                 Name = reader.GetNullableString(Plan.Name?.Index),
-                Mrn = reader.GetNullableString(Plan.Mrn?.Index)
+                Mrn = reader.GetNullableString(Plan.Mrn?.Index),
+                Age = reader.GetNullableString(Plan.Age?.Index)
             };
 
             rec.Age = rec.CalculateAge();
