@@ -15,6 +15,7 @@ import { Binary } from './Binary';
 import { Gender} from './Gender';
 import { LanguageByHeritage } from './LanguageByHeritage';
 import { Religion } from './Religion';
+import { Sex } from "./Sex";
 import { NihRaceEthnicityGenderTable } from './NihRaceEthnicityGenderTable';
 
 export interface Props {
@@ -62,6 +63,16 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                     </Col>
                 </Row>
                 <Row>
+                    <Col lg={6} md={12} className="visualization-sex-container">
+                        <SectionHeader headerText="Sex at Birth" />
+                        {/* fake data for now to test */}
+                        <Sex 
+                            counts={{"female": 20, "male": 15, "intersexed": 2}}
+                            delay={getDelay(0)}
+                            height={this.props.height}
+                            width={colWidth}
+                        />
+                    </Col>
                     <Col lg={6} md={12} className="visualization-age-container">
                         <SectionHeader headerText="Age" />
                         <Age 
