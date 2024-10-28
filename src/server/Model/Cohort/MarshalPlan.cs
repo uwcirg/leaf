@@ -662,15 +662,15 @@ namespace Model.Cohort
                 Mrn = mrn;
             }
 
-            // if (schema.TryGet(DemographicColumns.Sex, out var sex))
-            // {
-            //     Sex = sex;
-            // }
+            if (schema.TryGet(DemographicColumns.Sex, out var sex))
+            {
+                Sex = sex;
+            }
 
-            // if (schema.TryGet(DemographicColumns.Age, out var age))
-            // {
-            //     Age = age;
-            // }
+            if (schema.TryGet(DemographicColumns.Age, out var age))
+            {
+                Age = age;
+            }
         }
     }
 }

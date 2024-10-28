@@ -13,9 +13,12 @@ namespace Services.Extensions
     {
         public static int? CalculateAge(this PatientDemographic patient)
         {
-            if (patient.Age.HasValue)
-            {
-                return patient.Age.Value;
+            // if (patient.Age.HasValue)
+            // {
+            //     return patient.Age.Value;
+            // }
+            if (!String.IsNullOrEmpty(patient.Age?.ToString())) {
+                return patient.Age;
             }
 
             if (!patient.BirthDate.HasValue)

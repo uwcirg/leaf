@@ -44,7 +44,7 @@ export const visualizationConfig = {
                       "rgb(188, 189, 34)", "rgb(219, 219, 141)", "rgb(23, 190, 207)", "rgb(158, 218, 229)"]
         },
         sex: {
-            barSize: 28,
+            barSize: 32,
             colors: ["#00BCD4", '#8bc34a', '#f44336', '#e57373', '#FFA726']
         },
         age: {

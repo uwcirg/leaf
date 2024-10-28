@@ -24,11 +24,11 @@ namespace Model.Cohort
         [Field(Name = DemographicColumns.Gender, Type = LeafType.String, Required = true)]
         public string Gender { get; set; }
 
-        [Field(Name = DemographicColumns.Sex, Type = LeafType.String)]
-        public int? Sex { get; set; }
+        [Field(Name = DemographicColumns.Sex, Type = LeafType.String, Required = true)]
+        public string? Sex { get; set; }
 
         // NOTE(ndobb) this gets calculated after sql runs, so there is no field for this
-        [Field(Name = DemographicColumns.Age, Type = LeafType.Numeric)]
+        [Field(Name = DemographicColumns.Age, Type = LeafType.Numeric, Required = true)]
         public int? Age { get; set; }
 
         [Field(Name = DemographicColumns.Language, Type = LeafType.String, Required = true)]

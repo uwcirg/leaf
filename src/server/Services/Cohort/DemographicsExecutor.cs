@@ -132,13 +132,17 @@ namespace Services.Cohort
                 return (rec) =>
                 {
                     anon.Anonymize(rec);
-                    rec.Age = rec.CalculateAge();
+                    if (!String.IsNullOrEmpty(rec.Age?.ToString())) {
+                        rec.Age = rec.CalculateAge();
+                    }
                     return rec.ToAnonymousPatientDemographic();
                 };
             }
             return (rec) =>
             {
-                rec.Age = rec.CalculateAge();
+                if (!String.IsNullOrEmpty(rec.Age?.ToString())) {
+                    rec.Age = rec.CalculateAge();
+                }
                 return rec.ToIdentifiedPatientDemographic();
             };
         }
@@ -166,10 +170,11 @@ namespace Services.Cohort
                 DeceasedDateTime = reader.GetNullableDateTime(Plan.DeathDate?.Index),
                 Name = reader.GetNullableString(Plan.Name?.Index),
                 Mrn = reader.GetNullableString(Plan.Mrn?.Index),
-                Age = reader.GetNullableString(Plan.Age?.Index)
+                Age = reader.GetNullableInt(Plan.Age?.Index)
             };
-
-            rec.Age = rec.CalculateAge();
+            if (!String.IsNullOrEmpty(rec.Age?.ToString())) {
+                rec.Age = rec.CalculateAge();
+            }
 
             return rec;
         }
