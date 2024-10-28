@@ -31,7 +31,6 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
         const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData, sexData, patients } = this.props.cohort.visualization.demographics;
         const colWidth = this.props.width / 2;
         const getDelay = (i: number): number => i * this.delayIncrementMs;
-        console.log("patients ", patients);
         return (
             <Container className="visualize-demographic-container aggregate" fluid={true}>
                 <Row>

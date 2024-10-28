@@ -177,24 +177,18 @@ const getDemographics = () => {
                                 const getCategoryData = (category:string, patientData:[] = []) => {
                                     if (!category || !patientData || !patientData.length) return null;
                                     const matchedData = [...new Set(patientData.map(o => o[category]))];
-                                    console.log("matched data ", matchedData.filter(o => !!o));
                                     if (!matchedData.length) return null;
                                     const getEntries = (category:string, data:[]) => Object.fromEntries(matchedData.filter(c => !!c).map(c => [c, data.filter(o => {
-                                        console.log(o[category], c);
                                         return o[category] === c}).length]))
                                     return getEntries(category, patientData);
                                 };
-                               
-                                console.log(" demo data ", demographics);
-                                // const genders = [...new Set(demographics.patients.map(o => o.gender))];
-                                // const genderData = Object.fromEntries(genders.map(gender => [gender, demographics.patients.filter(o => o.gender === gender).length]));
-                                // console.log("genderData ", genderData)
+                                //TODO: figure out how to do this in the /src/server
                                 let categoryData = {};
                                 ["gender", "sex", "race"].forEach(category => {
                                     categoryData[`${category}Data`] = getCategoryData(category, demographics.patients);
                                 });
 
-                                console.log("category data ", categoryData)
+                                //console.log("category data ", categoryData)
 
                                 dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients, ...categoryData}));
                                 getPatientListFromNewBaseDataset(nr.id, demographics.patients, dispatch, getState);

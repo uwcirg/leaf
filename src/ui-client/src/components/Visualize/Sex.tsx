@@ -51,7 +51,7 @@ export class Sex extends React.PureComponent<Props, State> {
     const del = useDelay ? delay : 0;
     const w = width > this.maxWidth ? this.maxWidth : width;
 
-    if (!counts) return <div style={{margin: "24px"}}>No data available</div>;
+    if (!counts) return <div style={{ margin: "24px" }}>No data available</div>;
     let data = Object.entries(counts)
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
@@ -89,23 +89,7 @@ export class Sex extends React.PureComponent<Props, State> {
               margin={{ top: 30, right: 30, left: 10, bottom: 5 }}
               layout={"vertical"}
             >
-              {/* <XAxis dataKey="key" />
-              <YAxis />
-              <Bar
-                animationBegin={del}
-                barSize={config.barSize}
-                dataKey="value"
-                isAnimationActive={true}
-              >
-                {data.map((d, i) => (
-                  <Cell key={d.key} fill={this.color(i, config.colors)} />
-                ))}
-                <LabelList
-                  dataKey="value"
-                  formatter={this.formatNumber}
-                  position="top"
-                /> */}
-              <XAxis type="number" allowDecimals={false} hide={true}/>
+              <XAxis type="number" allowDecimals={false} hide={true} />
               <YAxis dataKey="key" type="category" interval={0} width={150} />
               <Bar
                 animationBegin={del}
@@ -121,11 +105,7 @@ export class Sex extends React.PureComponent<Props, State> {
                   formatter={this.formatNumber}
                   position="right"
                 />
-                <LabelList
-                  dataKey="key"
-  
-                  position="left"
-                />
+                <LabelList dataKey="key" position="left" />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
@@ -135,7 +115,7 @@ export class Sex extends React.PureComponent<Props, State> {
   }
 
   private formatNumber = (val: any) => val.toLocaleString();
-  
+
   private color = (i: number, colors: string[]): string => {
     const last = colors.length - 1;
     if (i <= last) {
