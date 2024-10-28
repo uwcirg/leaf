@@ -69,6 +69,7 @@ namespace Model.Compiler
     {
         public const string Exported = "Exported";
         public const string PersonId = DatasetColumns.PersonId;
+        public const string Age = "age";
         public const string AddressPostalCode = "addressPostalCode";
         public const string AddressState = "addressState";
         public const string Ethnicity = "ethnicity";
@@ -84,6 +85,7 @@ namespace Model.Compiler
         public const string DeathDate = "deceasedDateTime";
         public const string Name = "name";
         public const string Mrn = "mrn";
+        public const string Sex = "sex";
     }
 
     public static class ConditionColumns

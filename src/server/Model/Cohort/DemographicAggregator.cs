@@ -236,16 +236,22 @@ namespace Model.Cohort
             new KeyValuePair<Func<int, bool>, string>(x => x > 84, ageBuckets[10]),
         };
 
-        AgeByGenderBucket AgeToBucket(int age)
+        AgeByGenderBucket AgeToBucket(int? age)
         {
-            var name = ageSwitch.First(sw => sw.Key(age)).Value;
+            if (!String.IsNullOrEmpty(age?.ToString())) {
+                return AgeBreakdown.GetBucket(ageSwitch.First(sw => sw.Key(0)).Value);
+            }
+            var name = ageSwitch.First(sw => sw.Key((int)age)).Value;
             return AgeBreakdown.GetBucket(name);
         }
 
         void RecordGenderAgeAARP(PatientDemographic patient)
         {
-            void aarp(int age)
+            void aarp(int? age)
             {
+                if (String.IsNullOrEmpty(age.ToString())) {
+                    return;
+                }
                 if (age >= 65)
                 {
                     AARPSplit.Left.Value++;
@@ -270,13 +276,16 @@ namespace Model.Cohort
             }
 
             var boxed = patient.Age;
-            if (boxed.HasValue)
+          //  if (boxed.HasValue)
+            if (!String.IsNullOrEmpty(boxed.ToString()))
             {
-                var age = boxed.Value;
-                aarp(age);
-
-                var bucket = AgeToBucket(age);
-                increment(bucket);
+               // var age = boxed.Value;
+                //var age = boxed;
+                if (!String.IsNullOrEmpty(boxed.ToString())) {
+                    aarp(boxed);
+                    var bucket = AgeToBucket(boxed);
+                    increment(bucket);
+                }
             }
 
             if (gender != null)

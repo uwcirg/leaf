@@ -557,6 +557,7 @@ namespace Model.Cohort
     public sealed class DemographicMarshalPlan : MarshalPlan
     {
         public SchemaField Exported { get; set; }
+        public SchemaField Age { get; set; }
         public SchemaField AddressPostalCode { get; set; }
         public SchemaField AddressState { get; set; }
         public SchemaField Ethnicity { get; set; }
@@ -572,6 +573,7 @@ namespace Model.Cohort
         public SchemaField DeathDate { get; set; }
         public SchemaField Name { get; set; }
         public SchemaField Mrn { get; set; }
+        public SchemaField Sex { get; set; }
 
         public DemographicMarshalPlan()
         {
@@ -659,6 +661,16 @@ namespace Model.Cohort
             {
                 Mrn = mrn;
             }
+
+            // if (schema.TryGet(DemographicColumns.Sex, out var sex))
+            // {
+            //     Sex = sex;
+            // }
+
+            // if (schema.TryGet(DemographicColumns.Age, out var age))
+            // {
+            //     Age = age;
+            // }
         }
     }
 }

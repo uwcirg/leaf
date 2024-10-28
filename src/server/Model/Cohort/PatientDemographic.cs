@@ -25,7 +25,7 @@ namespace Model.Cohort
         public string Gender { get; set; }
 
         [Field(Name = DemographicColumns.Sex, Type = LeafType.String)]
-        public string Sex { get; set; }
+        public int? Sex { get; set; }
 
         // NOTE(ndobb) this gets calculated after sql runs, so there is no field for this
         [Field(Name = DemographicColumns.Age, Type = LeafType.Numeric)]
