@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="4.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="MySql.Data" Version="8.0.28" />
+    <PackageReference Include="MySqlConnector" Version="2.3.7" />
     <PackageReference Include="Npgsql" Version="6.0.2" />
     <PackageReference Include="System.Data.OracleClient" Version="1.0.8" />
     <PackageReference Include="Google.Cloud.BigQuery.V2" Version="2.3.0" />
@@ -44,7 +44,7 @@
   <ItemGroup>
     <None Remove="Admin\Notification\" />
     <None Remove="Compiler\" />
-    <None Remove="MySql.Data" />
+    <None Remove="MySqlConnector" />
     <None Remove="Npgsql" />
     <None Remove="System.Data.OracleClient" />
     <None Remove="Google.Cloud.BigQuery.V2" />

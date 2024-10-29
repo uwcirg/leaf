@@ -86,21 +86,21 @@ namespace Services.Compiler
      */
     public class MySqlQueryExecutor : BaseQueryExecutor
     {
-        MySql.Data.MySqlClient.MySqlDbType ToSqlType(object val)
+        MySqlConnector.MySqlDbType ToSqlType(object val)
         {
-            if (val is string)   return MySql.Data.MySqlClient.MySqlDbType.String;
-            if (val is decimal)  return MySql.Data.MySqlClient.MySqlDbType.Decimal;
-            if (val is double)   return MySql.Data.MySqlClient.MySqlDbType.Double;
-            if (val is int)      return MySql.Data.MySqlClient.MySqlDbType.Int32;
-            if (val is bool)     return MySql.Data.MySqlClient.MySqlDbType.Bit;
-            if (val is Guid)     return MySql.Data.MySqlClient.MySqlDbType.Guid;
-            if (val is DateTime) return MySql.Data.MySqlClient.MySqlDbType.DateTime;
-            return MySql.Data.MySqlClient.MySqlDbType.String;
+            if (val is string)   return MySqlConnector.MySqlDbType.String;
+            if (val is decimal)  return MySqlConnector.MySqlDbType.Decimal;
+            if (val is double)   return MySqlConnector.MySqlDbType.Double;
+            if (val is int)      return MySqlConnector.MySqlDbType.Int32;
+            if (val is bool)     return MySqlConnector.MySqlDbType.Bit;
+            if (val is Guid)     return MySqlConnector.MySqlDbType.Guid;
+            if (val is DateTime) return MySqlConnector.MySqlDbType.DateTime;
+            return MySqlConnector.MySqlDbType.String;
         }
 
-        MySql.Data.MySqlClient.MySqlParameter ToSqlParameter(QueryParameter q)
+        MySqlConnector.MySqlParameter ToSqlParameter(QueryParameter q)
         {
-            var parameter = new MySql.Data.MySqlClient.MySqlParameter($"?{q.Name}", ToSqlType(q.Value));
+            var parameter = new MySqlConnector.MySqlParameter($"?{q.Name}", ToSqlType(q.Value));
             parameter.Value = q.Value;
 
             return parameter;
@@ -114,11 +114,11 @@ namespace Services.Compiler
             IEnumerable<QueryParameter> parameters)
         {
             // Open connection
-            var conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+            var conn = new MySqlConnector.MySqlConnection(connStr);
             await conn.OpenAsync();
 
             // Create command
-            var cmd = new MySql.Data.MySqlClient.MySqlCommand(query, conn);
+            var cmd = new MySqlConnector.MySqlCommand(query, conn);
             cmd.CommandTimeout = timeout;
             cmd.Parameters.AddRange(parameters.Select(p => ToSqlParameter(p)).ToArray());
 
