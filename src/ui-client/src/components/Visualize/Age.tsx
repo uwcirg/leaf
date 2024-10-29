@@ -61,7 +61,6 @@ export class Age extends React.PureComponent<Props, State> {
       data = data.slice(0, this.defaultDataLength);
     }
 
-    console.log(" age data ", data);
     return (
       <div className={`${c}-column`} style={{ height, width: w }}>
         {/* Show all toggle */}
