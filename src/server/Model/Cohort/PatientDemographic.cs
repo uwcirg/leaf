@@ -63,5 +63,29 @@ namespace Model.Cohort
 
         [Field(Name = DemographicColumns.Mrn, Type = LeafType.String, Phi = true, Mask = false)]
         public string Mrn { get; set; }
+
+        [Field(Name = DemographicColumns.Coccur, Type = LeafType.Numeric, Required = true)]
+        public int? Coccur { get; set; }
+
+        [Field(Name = DemographicColumns.Methcur, Type = LeafType.Numeric, Required = true)]
+        public int? Methcur { get; set; }
+
+        [Field(Name = DemographicColumns.Opicur, Type = LeafType.Numeric, Required = true)]
+        public int? Opicur { get; set; }
+
+        [Field(Name = DemographicColumns.Potcur, Type = LeafType.Numeric, Required = true)]
+        public int? Potcur { get; set; }
+
+        [Field(Name = DemographicColumns.Sedcur, Type = LeafType.Numeric, Required = true)]
+        public int? Sedcur { get; set; }
+
+        [Field(Name = DemographicColumns.Inhcur, Type = LeafType.Numeric, Required = true)]
+        public int? Inhcur { get; set; }
+
+        [Field(Name = DemographicColumns.Stimcur, Type = LeafType.Numeric, Required = true)]
+        public int? Stimcur { get; set; }
+
+        [Field(Name = DemographicColumns.Halcur, Type = LeafType.Numeric, Required = true)]
+        public int? Halcur { get; set; }
     }
 }

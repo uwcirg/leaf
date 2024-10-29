@@ -16,13 +16,22 @@ export const visualizationConfig = {
             xAxisStroke: 'rgb(33,37,41)',
         },
         binary: {
-            barSize: 36,
+            barSize: 24,
             colors: {
                 AARP:        { left: '#00BCD4', right: '#4DD0E1'},
                 Gender:      { left: '#f44336', right: '#e57373'},
                 Hispanic:    { left: '#8bc34a', right: '#AED581'},
                 Married:     { left: '#FFC107', right: '#FFD54F'},
-                VitalStatus: { left: '#9C27B0', right: '#B868C8'}
+                VitalStatus: { left: '#9C27B0', right: '#B868C8'},
+                CurrentCocaineUse: { left: '#067BC2', right: '#84BCDA'},
+                CurrentMethUse: { left: '#DC602E', right: '#D7B49E'},
+                CurrentOpioidUse: { left: '#F4ACB7', right: '#FFE5D9'},
+                CurrentPotUse: { left: '#AF42AE', right: '#D0A3BF'},
+                CurrentSedUse: { left: '#7EBC89', right: '#C1DBB3'},
+                CurrentInhUse: { left: '#8DA7BE', right: '#CDE6F5'},
+                CurrentStimUse: { left: '#007090', right: '#A3BAC3'},
+                CurrentHalUse: { left: '#F9A03F', right: '#F8DDA4'},
+
             },
             xAxisStroke: 'rgb(33,37,41)'
         },

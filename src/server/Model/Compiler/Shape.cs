@@ -86,6 +86,14 @@ namespace Model.Compiler
         public const string Name = "name";
         public const string Mrn = "mrn";
         public const string Sex = "sex";
+        public const string Coccur = "coccur";
+        public const string Methcur = "methcur";
+        public const string Opicur = "opicur";
+        public const string Potcur = "potcur";
+        public const string Sedcur = "sedcur";
+        public const string Inhcur = "inhcur";
+        public const string Stimcur = "stimcur";
+        public const string Halcur = "halcur";
     }
 
     public static class ConditionColumns

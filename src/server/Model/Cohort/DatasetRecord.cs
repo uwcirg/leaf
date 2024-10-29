@@ -289,7 +289,15 @@ namespace Model.Cohort
                 BirthDate = BirthDate,
                 DeceasedDateTime = DeceasedDateTime,
                 Name = Name.ValueElseUnknown(),
-                Mrn = Mrn.ValueElseUnknown()
+                Mrn = Mrn.ValueElseUnknown(),
+                Coccur = Coccur,
+                Methcur = Methcur,
+                Opicur = Opicur,
+                Potcur = Potcur,
+                Sedcur = Sedcur,
+                Inhcur = Inhcur,
+                Stimcur = Stimcur,
+                Halcur = Halcur
             };
         }
 
@@ -310,7 +318,15 @@ namespace Model.Cohort
                 Religion = Religion.ValueElseUnknown(),
                 IsMarried = IsMarried,
                 IsHispanic = IsHispanic,
-                IsDeceased = IsDeceased
+                IsDeceased = IsDeceased,
+                Coccur = Coccur,
+                Methcur = Methcur,
+                Opicur = Opicur,
+                Potcur = Potcur,
+                Sedcur = Sedcur,
+                Inhcur = Inhcur,
+                Stimcur = Stimcur,
+                Halcur = Halcur
             };
         }
     }

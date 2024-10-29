@@ -34,7 +34,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
         return (
             <Container className="visualize-demographic-container aggregate" fluid={true}>
                 <Row>
-                    <Col lg={6} md={12} className="visualization-agebygender-container">
+                    <Col lg={5} md={12} className="visualization-agebygender-container">
                         {/* <SectionHeader headerText="Current Age By Gender" />
                         <AgeByGender 
                             data={ageByGenderData}
@@ -51,12 +51,12 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                             width={colWidth}
                         />
                     </Col>
-                    <Col lg={6} md={12} className="visualization-ataglance-container">
+                    <Col lg={7} md={12} className="visualization-ataglance-container">
                         <SectionHeader headerText="At a Glance" />
                         <Binary 
                             data={binarySplitData} 
                             delay={getDelay(1)}
-                            height={this.props.height}
+                            height={this.props.maxHeight}
                             width={colWidth} 
                         />
                     </Col>

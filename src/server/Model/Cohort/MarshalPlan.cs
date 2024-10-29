@@ -574,6 +574,14 @@ namespace Model.Cohort
         public SchemaField Name { get; set; }
         public SchemaField Mrn { get; set; }
         public SchemaField Sex { get; set; }
+        public SchemaField Coccur { get; set;}
+        public SchemaField Methcur { get; set;}
+        public SchemaField Opicur { get; set;}
+        public SchemaField Potcur { get; set;}
+        public SchemaField Sedcur { get; set;}
+        public SchemaField Inhcur { get; set;}
+        public SchemaField Stimcur { get; set;}
+        public SchemaField Halcur { get; set;}
 
         public DemographicMarshalPlan()
         {
@@ -671,6 +679,47 @@ namespace Model.Cohort
             {
                 Age = age;
             }
+
+            if (schema.TryGet(DemographicColumns.Coccur, out var coccur))
+            {
+                Coccur = coccur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Methcur, out var methcur))
+            {
+                Methcur = methcur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Opicur, out var opicur))
+            {
+                Opicur = opicur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Potcur, out var potcur))
+            {
+                Potcur = potcur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Sedcur, out var sedcur))
+            {
+                Sedcur = sedcur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Inhcur, out var inhcur))
+            {
+                Inhcur = inhcur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Stimcur, out var stimcur))
+            {
+                Stimcur = stimcur;
+            }
+
+            if (schema.TryGet(DemographicColumns.Halcur, out var halcur))
+            {
+                Halcur = halcur;
+            }
+
         }
     }
 }

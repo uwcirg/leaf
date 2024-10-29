@@ -170,7 +170,15 @@ namespace Services.Cohort
                 DeceasedDateTime = reader.GetNullableDateTime(Plan.DeathDate?.Index),
                 Name = reader.GetNullableString(Plan.Name?.Index),
                 Mrn = reader.GetNullableString(Plan.Mrn?.Index),
-                Age = reader.GetNullableInt(Plan.Age?.Index)
+                Age = reader.GetNullableInt(Plan.Age?.Index),
+                Coccur = reader.GetNullableInt(Plan.Coccur?.Index),
+                Methcur = reader.GetNullableInt(Plan.Methcur?.Index),
+                Opicur = reader.GetNullableInt(Plan.Opicur?.Index),
+                Sedcur = reader.GetNullableInt(Plan.Sedcur?.Index),
+                Inhcur = reader.GetNullableInt(Plan.Inhcur?.Index),
+                Stimcur = reader.GetNullableInt(Plan.Stimcur?.Index),
+                Halcur = reader.GetNullableInt(Plan.Halcur?.Index),
+                Potcur = reader.GetNullableInt(Plan.Potcur?.Index)
             };
             if (!String.IsNullOrEmpty(rec.Age?.ToString())) {
                 rec.Age = rec.CalculateAge();

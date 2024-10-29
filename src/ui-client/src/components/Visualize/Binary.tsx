@@ -19,7 +19,8 @@ interface Props {
 }
 
 export class Binary extends React.PureComponent<Props> {
-    private maxColWidth = 260;
+    //private maxColWidth = 260;
+    private maxColWidth = 320;
 
     public render() {
         const config = visualizationConfig.demographics.binary;
@@ -53,10 +54,10 @@ export class Binary extends React.PureComponent<Props> {
             <Row >
                 <div className="visualization-ataglance-column visualization-ataglance-left" style={{ height, width: colWidth }}>
                     <ResponsiveContainer>
-                        <BarChart data={leftBars} barCategoryGap={1} layout={'vertical'} margin={{top: 50, right: 0, left: 50, bottom: 50}}>
+                        <BarChart data={leftBars} barCategoryGap={2} layout={'vertical'} margin={{top: 50, right: 0, left: 120, bottom: 50}}>
                             <XAxis type="number" hide={true} axisLine={false} />
                             <Bar barSize={1} dataKey="dummyValue" isAnimationActive={false}>
-                                <LabelList dataKey="label" position="insideBottomRight" />
+                                <LabelList dataKey="label" position="insideBottomRight" offset={2}/>
                             </Bar>
                             <Bar animationBegin={delay} barSize={config.barSize} dataKey="value" isAnimationActive={true} >
                                 {leftBars.map((d: BinarySplit) => <Cell key={d.label} className={d.label} fill={d.color} />)}
@@ -67,10 +68,10 @@ export class Binary extends React.PureComponent<Props> {
                 </div>
                 <div className="visualization-ataglance-column visualization-ataglance-right" style={{ height, width: colWidth }}>
                     <ResponsiveContainer>
-                        <BarChart data={rightBars} barCategoryGap={2} layout={'vertical'} margin={{top: 50, right: 50, left: 0, bottom: 50}}>
+                        <BarChart data={rightBars} barCategoryGap={2} layout={'vertical'} margin={{top: 50, right: 120, left: 0, bottom: 50}}>
                             <XAxis type="number" hide={true} axisLine={false} />
                             <Bar barSize={1} dataKey="dummyValue" isAnimationActive={false}>
-                                <LabelList dataKey="label" position="insideBottomLeft" />
+                                <LabelList dataKey="label" position="insideBottomLeft" offset={2}/>
                             </Bar>
                             <Bar animationBegin={delay} barSize={config.barSize} dataKey="value" isAnimationActive={true} >
                                 {rightBars.map((d: BinarySplit) => <Cell key={d.label} className={d.label} fill={d.color} />)}

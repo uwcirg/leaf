@@ -91,6 +91,7 @@ class Visualize extends React.Component<Props, State> {
         const c = 'visualize';
         const { cohort, responders, auth } = this.props;
         const demogHeight = 400;
+        const demogOversizeHeight = 640;
         const respPadding = 200;
         const data: any = [];
         const { cacheLimit } = auth.config!.cohort;
@@ -152,6 +153,7 @@ class Visualize extends React.Component<Props, State> {
                 <AggregateDemographics 
                     cohort={cohort} 
                     height={demogHeight}
+                    maxHeight={demogOversizeHeight}
                     width={this.state.width}
                 />
                 {data.length > 1 && auth.config!.client.visualize.showFederated &&

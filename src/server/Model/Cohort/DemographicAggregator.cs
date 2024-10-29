@@ -50,6 +50,62 @@ namespace Model.Cohort
             Right = new BinarySplit { Label = "Not Married", Value = 0 }
         };
 
+        readonly BinarySplitPair CoccurSplit = new BinarySplitPair
+        {
+            Category = "CurrentCocaineUse",
+            Left = new BinarySplit { Label = "Using Cocaine/crack", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Cocaine/crack", Value = 0 }
+        };
+
+        readonly BinarySplitPair MethcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentMethUse",
+            Left = new BinarySplit { Label = "Using Meth", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Meth", Value = 0 }
+        };
+
+        readonly BinarySplitPair OpicurSplit = new BinarySplitPair
+        {
+            Category = "CurrentOpioidUse",
+            Left = new BinarySplit { Label = "Using Opioid", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Opioid", Value = 0 }
+        };
+
+        readonly BinarySplitPair SedcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentSedUse",
+            Left = new BinarySplit { Label = "Using Sedative", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Sedative", Value = 0 }
+        };
+
+        readonly BinarySplitPair StimcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentStimUse",
+            Left = new BinarySplit { Label = "Using Stimulant", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Stimulant", Value = 0 }
+        };
+
+        readonly BinarySplitPair HalcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentHalUse",
+            Left = new BinarySplit { Label = "Using Hallucinogen", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Hallucinogen", Value = 0 }
+        };
+
+        readonly BinarySplitPair PotcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentPotUse",
+            Left = new BinarySplit { Label = "Using Cannabis", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Cannabis", Value = 0 }
+        };
+
+         readonly BinarySplitPair InhcurSplit = new BinarySplitPair
+        {
+            Category = "CurrentInhUse",
+            Left = new BinarySplit { Label = "Using Inhalant", Value = 0 },
+            Right = new BinarySplit { Label = "Not Using Inhalant", Value = 0 }
+        };
+
         readonly DistributionData<AgeByGenderBucket> AgeBreakdown = new DistributionData<AgeByGenderBucket>(ageBuckets);
 
         readonly VariableBucketSet LanguageByHeritage = new VariableBucketSet();
@@ -87,11 +143,33 @@ namespace Model.Cohort
                 RecordGender(patient);
                 RecordNih(patient);
                 RecordAge(patient);
+                RecordCoccur(patient);
+                RecordMethcur(patient);
+                RecordOpicur(patient);
+                RecordPotcur(patient);
+                RecordSedcur(patient);
+                RecordInhcur(patient);
+                RecordStimcur(patient);
+                RecordHalcur(patient);
             }
 
             return new DemographicStatistics
             {
-                BinarySplitData = new List<BinarySplitPair> { GenderSplit, VitalSplit, AARPSplit, HispanicSplit, MarriedSplit },
+                BinarySplitData = new List<BinarySplitPair> { 
+                    GenderSplit,
+                    VitalSplit,
+                    AARPSplit,
+                    HispanicSplit,
+                    MarriedSplit,
+                    CoccurSplit,
+                    MethcurSplit,
+                    OpicurSplit,
+                    PotcurSplit,
+                    SedcurSplit,
+                    InhcurSplit,
+                    StimcurSplit,
+                    HalcurSplit
+                },
                 AgeByGenderData = AgeBreakdown,
                 LanguageByHeritageData = LanguageByHeritage,
                 ReligionData = Religion,
@@ -163,6 +241,150 @@ namespace Model.Cohort
             if (patient.IsMarried.Value)
             {
                 side = MarriedSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordCoccur(PatientDemographic patient)
+        {
+            if (patient.Coccur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = CoccurSplit.Right;
+
+            if (patient.Coccur >= 1)
+            {
+                side = CoccurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordMethcur(PatientDemographic patient)
+        {
+            if (patient.Methcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = MethcurSplit.Right;
+
+            if (patient.Methcur >= 1)
+            {
+                side = MethcurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordOpicur(PatientDemographic patient)
+        {
+            if (patient.Opicur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = OpicurSplit.Right;
+
+            if (patient.Opicur >= 1)
+            {
+                side = OpicurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordPotcur(PatientDemographic patient)
+        {
+            if (patient.Potcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = PotcurSplit.Right;
+
+            if (patient.Potcur >= 1)
+            {
+                side = PotcurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordSedcur(PatientDemographic patient)
+        {
+            if (patient.Sedcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = SedcurSplit.Right;
+
+            if (patient.Sedcur >= 1)
+            {
+                side = SedcurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordInhcur(PatientDemographic patient)
+        {
+            if (patient.Inhcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = InhcurSplit.Right;
+
+            if (patient.Inhcur >= 1)
+            {
+                side = InhcurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordStimcur(PatientDemographic patient)
+        {
+            if (patient.Stimcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = StimcurSplit.Right;
+
+            if (patient.Stimcur >= 1)
+            {
+                side = StimcurSplit.Left;
+            }
+
+            side.Value++;
+            return side;
+        }
+
+        BinarySplit RecordHalcur(PatientDemographic patient)
+        {
+            if (patient.Halcur == null)
+            {
+                return null;
+            }
+
+            BinarySplit side = HalcurSplit.Right;
+
+            if (patient.Halcur >= 1)
+            {
+                side = HalcurSplit.Left;
             }
 
             side.Value++;
