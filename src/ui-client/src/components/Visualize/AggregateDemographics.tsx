@@ -28,7 +28,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
     private delayIncrementMs = 600;
 
     public render() {
-        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData, sexData, patients } = this.props.cohort.visualization.demographics;
+        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData, sexData, ageData } = this.props.cohort.visualization.demographics;
         const colWidth = this.props.width / 2;
         const getDelay = (i: number): number => i * this.delayIncrementMs;
         return (
@@ -75,7 +75,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                     <Col lg={7} md={12} className="visualization-age-container">
                         <SectionHeader headerText="Age" />
                         <Age 
-                            patientData={patients}
+                            counts={ageData}
                             delay={getDelay(0)}
                             height={this.props.height}
                             width={colWidth}

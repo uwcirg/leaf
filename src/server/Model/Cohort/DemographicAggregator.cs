@@ -55,6 +55,9 @@ namespace Model.Cohort
         readonly VariableBucketSet LanguageByHeritage = new VariableBucketSet();
 
         readonly Dictionary<string,int> Religion = new Dictionary<string, int>();
+        readonly Dictionary<string,int> Sex = new Dictionary<string, int>();
+        readonly Dictionary<string,int> Gender = new Dictionary<string, int>();
+        readonly Dictionary<string,int> Age = new Dictionary<string, int>();
 
         readonly NihRaceEthnicityBuckets NihRaceEthnicity = new NihRaceEthnicityBuckets();
 
@@ -80,7 +83,10 @@ namespace Model.Cohort
                 RecordMarried(patient);
                 RecordLanguageByHeritage(patient);
                 RecordReligion(patient);
+                RecordSex(patient);
+                RecordGender(patient);
                 RecordNih(patient);
+                RecordAge(patient);
             }
 
             return new DemographicStatistics
@@ -89,7 +95,10 @@ namespace Model.Cohort
                 AgeByGenderData = AgeBreakdown,
                 LanguageByHeritageData = LanguageByHeritage,
                 ReligionData = Religion,
-                NihRaceEthnicityData = NihRaceEthnicity
+                GenderData = Gender,
+                NihRaceEthnicityData = NihRaceEthnicity,
+                SexData = Sex,
+                AgeData = Age
             };
         }
 
@@ -98,12 +107,12 @@ namespace Model.Cohort
 
         bool IsFemale(PatientDemographic patient)
         {
-            return femaleSynonyms.Any(s => s.Equals(patient.Gender, StringComparison.InvariantCultureIgnoreCase));
+            return femaleSynonyms.Any(s => s.Equals(patient.Sex, StringComparison.InvariantCultureIgnoreCase));
         }
 
         bool IsMale(PatientDemographic patient)
         {
-            return maleSynonyms.Any(s => s.Equals(patient.Gender, StringComparison.InvariantCultureIgnoreCase));
+            return maleSynonyms.Any(s => s.Equals(patient.Sex, StringComparison.InvariantCultureIgnoreCase));
         }
 
         BinarySplit RecordVitalStatus(PatientDemographic patient)
@@ -180,6 +189,76 @@ namespace Model.Cohort
                 return;
             }
             Religion.Add(religion, 1);
+        }
+
+         void RecordGender(PatientDemographic patient)
+        {
+            if (string.IsNullOrEmpty(patient.Gender))
+            {
+                return;
+            }
+
+            var gender = patient.Gender.ToLowerInvariant();
+
+            if (Gender.ContainsKey(gender))
+            {
+                Gender[gender]++;
+                return;
+            }
+            Gender.Add(gender, 1);
+        }
+
+        void RecordSex(PatientDemographic patient)
+        {
+            if (string.IsNullOrEmpty(patient.Sex))
+            {
+                return;
+            }
+
+            var sex = patient.Sex.ToLowerInvariant();
+
+            if (Sex.ContainsKey(sex))
+            {
+                Sex[sex]++;
+                return;
+            }
+            Sex.Add(sex, 1);
+        }
+
+        readonly static string[] adultAgeBuckets = { "<20", "20-29", "30-39", "40-49", "50-59", "60-69", ">=70"};
+        void RecordAge(PatientDemographic patient)
+        {
+            if (String.IsNullOrEmpty(patient.Age?.ToString()))
+            {
+                return;
+            }
+            var age = "";
+            if (patient.Age < 20) {
+                age = adultAgeBuckets[0];
+            } else if (patient.Age >= 20 && patient.Age < 30) {
+                age = adultAgeBuckets[1];
+            } else if (patient.Age >= 30 && patient.Age < 40) {
+                age = adultAgeBuckets[2];
+            } else if (patient.Age >= 40 && patient.Age < 50) {
+                age = adultAgeBuckets[3];
+            } else if (patient.Age >= 50 && patient.Age < 60) {
+                age = adultAgeBuckets[4];
+            } else if (patient.Age >= 60 && patient.Age < 70) {
+                age = adultAgeBuckets[5];
+            } else if (patient.Age >= 70) {
+                age = adultAgeBuckets[6];
+            }
+
+            if (Age.ContainsKey(age))
+            {
+                Age[age]++;
+                return;
+            }
+            if (String.IsNullOrEmpty(age))
+            {
+                return;
+            }
+            Age.Add(age, 1);
         }
 
         void RecordNih(PatientDemographic patient)

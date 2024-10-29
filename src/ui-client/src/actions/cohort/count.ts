@@ -174,23 +174,9 @@ const getDemographics = () => {
                                 if (getState().cohort.count.state !== CohortStateType.LOADED) { return; }
                                 atLeastOneSucceeded = true;
                                 const demographics = demResponse.data as DemographicDTO;
-                                const getCategoryData = (category:string, patientData:[] = []) => {
-                                    if (!category || !patientData || !patientData.length) return null;
-                                    const matchedData = [...new Set(patientData.map(o => o[category]))];
-                                    if (!matchedData.length) return null;
-                                    const getEntries = (category:string, data:[]) => Object.fromEntries(matchedData.filter(c => !!c).map(c => [c, data.filter(o => {
-                                        return o[category] === c}).length]))
-                                    return getEntries(category, patientData);
-                                };
-                                //TODO: figure out how to do this in the /src/server
-                                let categoryData = {};
-                                ["gender", "sex", "race"].forEach(category => {
-                                    categoryData[`${category}Data`] = getCategoryData(category, demographics.patients);
-                                });
+                                console.log("demographics stats data ", demographics.statistics);
 
-                                //console.log("category data ", categoryData)
-
-                                dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients, ...categoryData}));
+                                dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients}));
                                 getPatientListFromNewBaseDataset(nr.id, demographics.patients, dispatch, getState);
 
                                 if (demographics.columnNames) {

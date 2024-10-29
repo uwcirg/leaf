@@ -45,14 +45,14 @@ export class Age extends React.PureComponent<Props, State> {
 
   public render() {
     const config = visualizationConfig.demographics.age;
-    const { height, width, patientData, delay } = this.props;
+    const { height, width, counts, delay } = this.props;
     const { showAll, useDelay } = this.state;
     const c = this.className;
     const del = useDelay ? delay : 0;
     const w = width > this.maxWidth ? this.maxWidth : width;
 
-    if (!patientData) return <div style={{margin: "24px"}}>No data available</div>;
-    let data = Object.entries(this.formatData(patientData))
+    if (!counts) return <div style={{margin: "24px"}}>No data available</div>;
+    let data = Object.entries(counts)
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
@@ -114,19 +114,6 @@ export class Age extends React.PureComponent<Props, State> {
   }
 
   private formatNumber = (val: any) => val.toLocaleString();
-  private formatData = (data: []) => {
-    if (!data) return null;
-    const ageData = data.filter(o => !!o.age).map(o => o.age);
-    let bracketData = {};
-    bracketData["< 20"] = ageData.filter(n => parseInt(n) < 20).length;
-    bracketData["20 - 29"] = ageData.filter(n => parseInt(n) >= 20 && parseInt(n) < 30).length;
-    bracketData["30 - 39"] = ageData.filter(n => parseInt(n) >= 30 && parseInt(n) < 40).length;
-    bracketData["40 - 49"] = ageData.filter(n => parseInt(n) >= 40 && parseInt(n) < 49).length;
-    bracketData["50 - 59"] = ageData.filter(n => parseInt(n) >= 50 && parseInt(n) < 60).length;
-    bracketData[">= 60"] = ageData.filter(n => parseInt(n) >= 60).length;
-    return bracketData;
-  };
-
   private color = (i: number, colors: string[]): string => {
     const last = colors.length - 1;
     if (i <= last) {

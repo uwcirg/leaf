@@ -14,6 +14,9 @@ namespace Model.Cohort
         public DistributionData<AgeByGenderBucket> AgeByGenderData { get; set; }
         public VariableBucketSet LanguageByHeritageData { get; set; }
         public Dictionary<string,int> ReligionData { get; set; }
+        public Dictionary<string,int> SexData { get; set; }
+        public Dictionary<string,int> GenderData { get; set; }
+        public Dictionary<string,int> AgeData { get; set; }
         public NihRaceEthnicityBuckets NihRaceEthnicityData { get; set; }
     }
 }
