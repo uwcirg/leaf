@@ -84,7 +84,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={6} md={12} className="visualization-languagebyheritage-container">
+                    <Col lg={12} md={12} className="visualization-languagebyheritage-container">
                         <SectionHeader headerText="Race/Ethnicity" />
                         {/* <LanguageByHeritage 
                             bucketset={languageByHeritageData} 

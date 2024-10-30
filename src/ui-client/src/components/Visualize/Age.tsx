@@ -52,7 +52,15 @@ export class Age extends React.PureComponent<Props, State> {
     const w = width > this.maxWidth ? this.maxWidth : width;
 
     if (!counts) return <div style={{margin: "24px"}}>No data available</div>;
-    let data = Object.entries(counts)
+    const sorted = Object.entries(counts)
+      .sort((a, b) => {
+        const arrA = a[0].split("-");
+        const arrB = b[0].split("-");
+        const a1 = parseInt(!isNaN(parseInt(arrA[0]))?arrA[0]: arrA[1]);
+        const b1 = parseInt(!isNaN(parseInt(arrB[0]))?arrB[0]: arrB[1]);
+        return a1 - b1;
+      });
+    let data = sorted
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
