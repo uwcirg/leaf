@@ -52,7 +52,9 @@ export class Gender extends React.PureComponent<Props, State> {
     const w = width > this.maxWidth ? this.maxWidth : width;
 
     if (!counts) return <div style={{margin: "24px"}}>No data available</div>;
-    let data = Object.entries(counts)
+    const sorted = Object.entries(counts)
+      .sort((a, b) => a[0].localeCompare(b[0]));
+    let data = sorted
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
