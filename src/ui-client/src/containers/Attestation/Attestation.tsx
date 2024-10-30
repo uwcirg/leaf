@@ -149,7 +149,7 @@ class Attestation extends React.PureComponent<Props, State> {
 
                     {/* Top logo row (Leaf, ITHS, CD2H) */}
                     <div className={`${c}-leaf-logo-wrapper`}>
-                        <img alt='leaf-logo' className={`${c}-leaf-logo`} src={process.env.PUBLIC_URL + '/images/logos/apps/leaf.png'} />
+                        <img alt='leaf-logo' className={`${c}-leaf-logo`} src={process.env.PUBLIC_URL + '/images/logos/apps/logo_dark.png'} />
                         <div className={`${c}-title`}>
                             leaf
                             <span className={`${c}-leaf-version`}>v{pkg.version}</span>

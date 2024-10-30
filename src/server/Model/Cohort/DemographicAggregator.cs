@@ -53,57 +53,57 @@ namespace Model.Cohort
         readonly BinarySplitPair CoccurSplit = new BinarySplitPair
         {
             Category = "CurrentCocaineUse",
-            Left = new BinarySplit { Label = "Using Cocaine/crack", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Cocaine/crack", Value = 0 }
+            Left = new BinarySplit { Label = "Current Cocaine/crack", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Using Cocaine/crack", Value = 0 }
         };
 
         readonly BinarySplitPair MethcurSplit = new BinarySplitPair
         {
             Category = "CurrentMethUse",
-            Left = new BinarySplit { Label = "Using Meth", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Meth", Value = 0 }
+            Left = new BinarySplit { Label = "Current Meth/Amphetamine", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Using Meth/Amphetamine", Value = 0 }
         };
 
         readonly BinarySplitPair OpicurSplit = new BinarySplitPair
         {
             Category = "CurrentOpioidUse",
-            Left = new BinarySplit { Label = "Using Opioid", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Opioid", Value = 0 }
+            Left = new BinarySplit { Label = "Current Opioid", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Opioid", Value = 0 }
         };
 
         readonly BinarySplitPair SedcurSplit = new BinarySplitPair
         {
             Category = "CurrentSedUse",
-            Left = new BinarySplit { Label = "Using Sedative", Value = 0 },
+            Left = new BinarySplit { Label = "Current Sedative", Value = 0 },
             Right = new BinarySplit { Label = "Not Using Sedative", Value = 0 }
         };
 
         readonly BinarySplitPair StimcurSplit = new BinarySplitPair
         {
             Category = "CurrentStimUse",
-            Left = new BinarySplit { Label = "Using Stimulant", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Stimulant", Value = 0 }
+            Left = new BinarySplit { Label = "Current Stimulant", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Stimulant", Value = 0 }
         };
 
         readonly BinarySplitPair HalcurSplit = new BinarySplitPair
         {
             Category = "CurrentHalUse",
-            Left = new BinarySplit { Label = "Using Hallucinogen", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Hallucinogen", Value = 0 }
+            Left = new BinarySplit { Label = "Current Hallucinogen", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Hallucinogen", Value = 0 }
         };
 
         readonly BinarySplitPair PotcurSplit = new BinarySplitPair
         {
             Category = "CurrentPotUse",
-            Left = new BinarySplit { Label = "Using Cannabis", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Cannabis", Value = 0 }
+            Left = new BinarySplit { Label = "Current Cannabis", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Cannabis", Value = 0 }
         };
 
          readonly BinarySplitPair InhcurSplit = new BinarySplitPair
         {
             Category = "CurrentInhUse",
-            Left = new BinarySplit { Label = "Using Inhalant", Value = 0 },
-            Right = new BinarySplit { Label = "Not Using Inhalant", Value = 0 }
+            Left = new BinarySplit { Label = "Current Inhalant", Value = 0 },
+            Right = new BinarySplit { Label = "No Current Inhalant", Value = 0 }
         };
 
         readonly DistributionData<AgeByGenderBucket> AgeBreakdown = new DistributionData<AgeByGenderBucket>(ageBuckets);

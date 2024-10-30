@@ -125,8 +125,8 @@ export class Gender extends React.PureComponent<Props, State> {
       ciswoman: "cis-woman",
       transwoman: "trans-woman",
       transman: "trans-man",
-      fab: "nonbinary/other FAB",
-      mab: "nonbinary/other MAB",
+      fab: "nonbinary/other (assigned female at birth)",
+      mab: "nonbinary/other (assigned male at birth)",
     }[String(val).toLowerCase().replace(/[-_]/g, "")];
     if (displayValue) return displayValue;
     return val?.replace(/[-_]/g, " ")??"other";
