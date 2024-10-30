@@ -112,8 +112,8 @@ namespace Model.Cohort
 
         readonly Dictionary<string,int> Religion = new Dictionary<string, int>();
         readonly Dictionary<string,int> Sex = new Dictionary<string, int>();
-        readonly Dictionary<string,int> Gender = new Dictionary<string, int>();
-        readonly Dictionary<string,int> Age = new Dictionary<string, int>();
+        readonly SortedDictionary<string,int> Gender = new SortedDictionary<string, int>();
+        readonly SortedDictionary<string,int> Age = new SortedDictionary<string, int>();
         readonly Dictionary<string,int> Race = new Dictionary<string, int>();
 
         readonly NihRaceEthnicityBuckets NihRaceEthnicity = new NihRaceEthnicityBuckets();
@@ -467,7 +467,7 @@ namespace Model.Cohort
             Race.Add(race, 1);
         }
 
-        readonly static string[] adultAgeBuckets = { "0-19", "20-29", "30-39", "40-49", "50-59", "60-69", ">=70"};
+        readonly static string[] adultAgeBuckets = { "<20", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"};
         void RecordAge(PatientDemographic patient)
         {
             if (String.IsNullOrEmpty(patient.Age?.ToString()))

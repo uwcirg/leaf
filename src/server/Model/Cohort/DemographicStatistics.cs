@@ -15,8 +15,8 @@ namespace Model.Cohort
         public VariableBucketSet LanguageByHeritageData { get; set; }
         public Dictionary<string,int> ReligionData { get; set; }
         public Dictionary<string,int> SexData { get; set; }
-        public Dictionary<string,int> GenderData { get; set; }
-        public Dictionary<string,int> AgeData { get; set; }
+        public SortedDictionary<string,int> GenderData { get; set; }
+        public SortedDictionary<string,int> AgeData { get; set; }
         public Dictionary<string,int> RaceData { get; set; }
         public NihRaceEthnicityBuckets NihRaceEthnicityData { get; set; }
     }
