@@ -158,10 +158,10 @@ namespace Model.Cohort
             return new DemographicStatistics
             {
                 BinarySplitData = new List<BinarySplitPair> { 
-                    GenderSplit,
+                 //   GenderSplit,
                  //   VitalSplit,
-                    AARPSplit,
-                    HispanicSplit,
+                 //    AARPSplit,
+                 //    HispanicSplit,
                  //   MarriedSplit,
                     CoccurSplit,
                     MethcurSplit,

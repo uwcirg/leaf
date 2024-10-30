@@ -174,7 +174,7 @@ const getDemographics = () => {
                                 if (getState().cohort.count.state !== CohortStateType.LOADED) { return; }
                                 atLeastOneSucceeded = true;
                                 const demographics = demResponse.data as DemographicDTO;
-                                console.log("demographics stats data ", demographics.statistics);
+                                console.log("demographics stats data ", demographics?.statistics);
 
                                 dispatch(setNetworkVisualizationData(nr.id, {...demographics.statistics, patients: demographics.patients}));
                                 getPatientListFromNewBaseDataset(nr.id, demographics.patients, dispatch, getState);

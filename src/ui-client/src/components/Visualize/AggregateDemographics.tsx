@@ -9,15 +9,15 @@ import React from 'react';
 import { Col, Container, Row } from 'reactstrap'
 import { CohortState } from '../../models/state/CohortState';
 import { SectionHeader } from '../Other/SectionHeader/SectionHeader';
-import { AgeByGender } from './AgeByGender';
+//import { AgeByGender } from './AgeByGender';
 import { Age} from './Age';
 import { Binary } from './Binary';
 import { Gender} from './Gender';
-import { LanguageByHeritage } from './LanguageByHeritage';
+//import { LanguageByHeritage } from './LanguageByHeritage';
 import { Race } from "./Race";
-import { Religion } from './Religion';
+//import { Religion } from './Religion';
 import { Sex } from "./Sex";
-import { NihRaceEthnicityGenderTable } from './NihRaceEthnicityGenderTable';
+//import { NihRaceEthnicityGenderTable } from './NihRaceEthnicityGenderTable';
 
 export interface Props {
     cohort: CohortState;
@@ -68,7 +68,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                         {/* fake data for now to test */}
                         <Sex 
                             counts={sexData}
-                            delay={getDelay(0)}
+                            delay={getDelay(2)}
                             height={this.props.height}
                             width={colWidth}
                         />
@@ -77,7 +77,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                         <SectionHeader headerText="Age" />
                         <Age 
                             counts={ageData}
-                            delay={getDelay(0)}
+                            delay={getDelay(2)}
                             height={this.props.height}
                             width={colWidth}
                         />
@@ -94,7 +94,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                         /> */}
                         <Race
                             counts={raceData}
-                            delay={getDelay(2)}
+                            delay={getDelay(3)}
                             height={this.props.height}
                             width={colWidth}
                         ></Race>

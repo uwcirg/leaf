@@ -129,4 +129,10 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
     margin-left: 4px;
     font-size: 2rem;
 }
+
+/* Visualize */
+.visualization-no-data-container {
+    color: #777;
+    margin-top: 24px;
+}
  

@@ -51,8 +51,8 @@ export class Race extends React.PureComponent<Props, State> {
     const del = useDelay ? delay : 0;
     const w = width > this.maxWidth ? this.maxWidth : width;
 
-    if (!counts) return <div style={{ margin: "24px" }}>No data available</div>;
-    let data = Object.entries(counts)
+    if (!counts) return <div className="visualization-no-data-container">No data available</div>;
+    let data = Object.entries(counts??{})
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
