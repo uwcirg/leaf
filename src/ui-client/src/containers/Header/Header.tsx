@@ -57,7 +57,7 @@ class Header extends React.PureComponent<Props> {
                 <div className={`${c}-content-side`}>
                     <div className={`${c}-title`} >
                         <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_light.png'} />
-                        <div className="title">leaf</div>
+                        {/* <div className="title">leaf</div> */}
                     </div>
                 </div>
                 <div className="mx-auto">
