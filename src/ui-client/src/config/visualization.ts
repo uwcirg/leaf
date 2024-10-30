@@ -56,6 +56,10 @@ export const visualizationConfig = {
             barSize: 32,
             colors: ["#00BCD4", '#8bc34a', '#f44336', '#e57373', '#FFA726']
         },
+        race: {
+            barSize: 32,
+            colors: ["#087E8B", "#0B3954", "#F48498", "#B4ADEA", "#713E5A", "#C6C5B9"]
+        },
         age: {
             barSize: 28,
             colors: [ "rgb(255, 152, 150)", "rgb(148, 103, 189)", "rgb(197, 176, 213)", "rgb(140, 86, 75)", "rgb(196, 156, 148)", "rgb(227, 119, 194)", "rgb(247, 182, 210)", "rgb(127, 127, 127)", "rgb(199, 199, 199)", 

@@ -14,6 +14,7 @@ import { Age} from './Age';
 import { Binary } from './Binary';
 import { Gender} from './Gender';
 import { LanguageByHeritage } from './LanguageByHeritage';
+import { Race } from "./Race";
 import { Religion } from './Religion';
 import { Sex } from "./Sex";
 import { NihRaceEthnicityGenderTable } from './NihRaceEthnicityGenderTable';
@@ -28,7 +29,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
     private delayIncrementMs = 600;
 
     public render() {
-        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData, sexData, ageData } = this.props.cohort.visualization.demographics;
+        const { ageByGenderData, binarySplitData, languageByHeritageData, religionData, nihRaceEthnicityData, genderData, sexData, ageData, raceData } = this.props.cohort.visualization.demographics;
         const colWidth = this.props.width / 2;
         const getDelay = (i: number): number => i * this.delayIncrementMs;
         return (
@@ -84,15 +85,21 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                 </Row>
                 <Row>
                     <Col lg={6} md={12} className="visualization-languagebyheritage-container">
-                        <SectionHeader headerText="Ethnic Heritage by Language" />
-                        <LanguageByHeritage 
+                        <SectionHeader headerText="Race/Ethnicity" />
+                        {/* <LanguageByHeritage 
                             bucketset={languageByHeritageData} 
                             delay={getDelay(2)}
                             height={this.props.height}
                             width={colWidth}
-                        />
+                        /> */}
+                        <Race
+                            counts={raceData}
+                            delay={getDelay(2)}
+                            height={this.props.height}
+                            width={colWidth}
+                        ></Race>
                     </Col>
-                    <Col lg={6} md={12} className="visualization-ataglance-container">
+                    {/* <Col lg={6} md={12} className="visualization-ataglance-container">
                         <SectionHeader headerText="Religious Beliefs" />
                         <Religion
                             counts={religionData} 
@@ -100,9 +107,9 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                             height={this.props.height}
                             width={colWidth}
                         />
-                    </Col>
+                    </Col> */}
                 </Row>
-                <Row>
+                {/* <Row>
                     <Col md={12} className="visualization-nih">
                         <SectionHeader 
                             headerText="NIH Race, Ethnicity, and Gender" 
@@ -112,7 +119,7 @@ export default class AggregateDemographics extends React.PureComponent<Props> {
                     <Col lg={{ size: 8, order: 2, offset: 2 }} md={12}>
                         <NihRaceEthnicityGenderTable data={nihRaceEthnicityData} />
                     </Col>
-                </Row>
+                </Row> */}
             </Container>
         );
     }

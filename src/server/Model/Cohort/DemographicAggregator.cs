@@ -114,6 +114,7 @@ namespace Model.Cohort
         readonly Dictionary<string,int> Sex = new Dictionary<string, int>();
         readonly Dictionary<string,int> Gender = new Dictionary<string, int>();
         readonly Dictionary<string,int> Age = new Dictionary<string, int>();
+        readonly Dictionary<string,int> Race = new Dictionary<string, int>();
 
         readonly NihRaceEthnicityBuckets NihRaceEthnicity = new NihRaceEthnicityBuckets();
 
@@ -141,6 +142,7 @@ namespace Model.Cohort
                 RecordReligion(patient);
                 RecordSex(patient);
                 RecordGender(patient);
+                RecordRace(patient);
                 RecordNih(patient);
                 RecordAge(patient);
                 RecordCoccur(patient);
@@ -157,10 +159,10 @@ namespace Model.Cohort
             {
                 BinarySplitData = new List<BinarySplitPair> { 
                     GenderSplit,
-                    VitalSplit,
+                 //   VitalSplit,
                     AARPSplit,
                     HispanicSplit,
-                    MarriedSplit,
+                 //   MarriedSplit,
                     CoccurSplit,
                     MethcurSplit,
                     OpicurSplit,
@@ -174,6 +176,7 @@ namespace Model.Cohort
                 LanguageByHeritageData = LanguageByHeritage,
                 ReligionData = Religion,
                 GenderData = Gender,
+                RaceData = Race,
                 NihRaceEthnicityData = NihRaceEthnicity,
                 SexData = Sex,
                 AgeData = Age
@@ -445,6 +448,23 @@ namespace Model.Cohort
                 return;
             }
             Sex.Add(sex, 1);
+        }
+
+        void RecordRace(PatientDemographic patient)
+        {
+            if (string.IsNullOrEmpty(patient.Race))
+            {
+                return;
+            }
+
+            var race = patient.Race.ToLowerInvariant();
+
+            if (Race.ContainsKey(race))
+            {
+                Race[race]++;
+                return;
+            }
+            Race.Add(race, 1);
         }
 
         readonly static string[] adultAgeBuckets = { "<20", "20-29", "30-39", "40-49", "50-59", "60-69", ">=70"};

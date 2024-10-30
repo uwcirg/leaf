@@ -17,6 +17,7 @@ namespace Model.Cohort
         public Dictionary<string,int> SexData { get; set; }
         public Dictionary<string,int> GenderData { get; set; }
         public Dictionary<string,int> AgeData { get; set; }
+        public Dictionary<string,int> RaceData { get; set; }
         public NihRaceEthnicityBuckets NihRaceEthnicityData { get; set; }
     }
 }
