@@ -141,7 +141,7 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
     color: #777;
     margin-top: 24px;
 }
-.visualization-sex-column .recharts-label-list tspan,
-.visualization-gender-column .recharts-label-list tspan {
+.visualization-sex-column .recharts-label-list text tspan:first-of-type,
+.visualization-gender-column .recharts-label-list text tspan:first-of-type {
     text-transform: capitalize;
 }

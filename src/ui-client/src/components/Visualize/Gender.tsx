@@ -51,8 +51,11 @@ export class Gender extends React.PureComponent<Props, State> {
     const del = useDelay ? delay : 0;
     const w = width > this.maxWidth ? this.maxWidth : width;
 
-    if (!counts) return <div className="visualization-no-data-container">No data available</div>;
-    let data = Object.entries(counts??{})
+    if (!counts || !Object.keys(counts).length)
+      return (
+        <div className="visualization-no-data-container">No data available</div>
+      );
+    let data = Object.entries(counts ?? {})
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => (a.value > b.value ? 0 : 1));
     const len = data.length;
@@ -89,7 +92,7 @@ export class Gender extends React.PureComponent<Props, State> {
               margin={{ top: 30, right: 30, left: 10, bottom: 5 }}
               layout="vertical"
             >
-              <XAxis type="number" allowDecimals={false} hide={true}/>
+              <XAxis type="number" allowDecimals={false} hide={true} />
               <YAxis dataKey="key" type="category" interval={0} width={150} />
               <Bar
                 animationBegin={del}
@@ -129,7 +132,7 @@ export class Gender extends React.PureComponent<Props, State> {
       mab: "nonbinary/other (assigned male at birth)",
     }[String(val).toLowerCase().replace(/[-_]/g, "")];
     if (displayValue) return displayValue;
-    return val?.replace(/[-_]/g, " ")??"other";
+    return val?.replace(/[-_]/g, " ") ?? "other";
   };
 
   private color = (i: number, colors: string[]): string => {
