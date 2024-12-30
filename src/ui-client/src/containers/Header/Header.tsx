@@ -56,8 +56,8 @@ class Header extends React.PureComponent<Props> {
             <Navbar id={`${c}-container`} className="d-flex justify-content-between mb-3">
                 <div className={`${c}-content-side`}>
                     <div className={`${c}-title`} >
-                        <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/leaf.png'} />
-                        <div className="title">leaf</div>
+                        <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_light.png'} />
+                        {/* <div className="title">leaf</div> */}
                     </div>
                 </div>
                 <div className="mx-auto">

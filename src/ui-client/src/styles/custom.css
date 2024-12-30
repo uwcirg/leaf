@@ -3,6 +3,9 @@
     margin-left: 8px;
     font-size: 1.8rem;
 }
+#header-container .header-role:has(.header-role-icon-phi) {
+    display: none;
+}
 .header-content-side .header-title {
  
     /* Example
@@ -125,8 +128,17 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
 }
 
 /* Attestation modal */
+.attestation-leaf-logo {
+    border-radius: 0;
+}
 .attestation-modal-wrap .attestation-title {
     margin-left: 4px;
     font-size: 2rem;
+}
+
+/* Visualize */
+.visualization-no-data-container {
+    color: #777;
+    margin-top: 24px;
 }
  

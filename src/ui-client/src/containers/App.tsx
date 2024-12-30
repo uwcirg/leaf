@@ -33,6 +33,8 @@ import DataImportContainer from '../containers/DataImport/DataImport';
 import UserQuestionModal from './UserQuestionModal/UserQuestionModal';
 import { SavedQueryMap } from '../models/Query';
 import { sleep } from '../utils/Sleep';
+import { fetchEnvData, getEnvs } from '../utils/envConfig';
+import { addMatomoTracking } from "../utils/piwik";
 import NotificationModal from '../components/Modals/NotificationModal/NotificationModal';
 import MaintainenceModal from '../components/Modals/MaintainenceModal/MaintainenceModal';
 import './App.css';
@@ -74,6 +76,10 @@ class App extends React.Component<Props> {
         this.handleSessionTokenRefresh();
         dispatch(getIdToken());
         dispatch(refreshServerStateLoop());
+        fetchEnvData();
+        getEnvs();
+        console.log("env ", process.env)
+        addMatomoTracking();
     }
 
     public componentDidUpdate() { 
