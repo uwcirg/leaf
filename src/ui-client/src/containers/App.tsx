@@ -78,7 +78,6 @@ class App extends React.Component<Props> {
         dispatch(refreshServerStateLoop());
         fetchEnvData();
         getEnvs();
-        console.log("env ", process.env)
         addMatomoTracking();
     }
 
