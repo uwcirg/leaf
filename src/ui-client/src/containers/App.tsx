@@ -69,7 +69,7 @@ class App extends React.Component<Props> {
     private lastHeartbeat = new Date();
 
     public componentDidMount() {
-        const { dispatch, auth } = this.props;
+        const { dispatch } = this.props;
         this.handleBrowserHeartbeat();
         this.handleSessionTokenRefresh();
         dispatch(getIdToken());
