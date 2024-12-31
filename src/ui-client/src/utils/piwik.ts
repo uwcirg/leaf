@@ -12,11 +12,14 @@ export function getUserIdFromEnv(config) : number | string | null {
 // get PIWIK siteId from environment variable
 export function getMatomoSiteIdFromEnv(config) : number | null{
     if (!config) return null;
-    if (config["REACT_APP_MATOMO_SITE_ID"]) return config["REACT_APP_MATOMO_SITE_ID"];
-    if (config["MATOMO_SITE_ID"]) return config["MATOMO_SITE_ID"];
-    if (config["REACT_APP_PIWIK_SITE_ID"]) return config["REACT_APP_PIWIK_SITE_ID"];
-    if (config["PIWIK_SITE_ID"]) return config["PIWIK_SITE_ID"];
-    return config["SITE_ID"];
+    const envs = config.client ? config.client: config;
+    // appsettings.json {client: .....}
+    // env.json
+    if (envs["REACT_APP_MATOMO_SITE_ID"]) return envs["REACT_APP_MATOMO_SITE_ID"];
+    if (envs["MATOMO_SITE_ID"]) return envs["MATOMO_SITE_ID"];
+    if (envs["REACT_APP_PIWIK_SITE_ID"]) return envs["REACT_APP_PIWIK_SITE_ID"];
+    if (envs["PIWIK_SITE_ID"]) return envs["PIWIK_SITE_ID"];
+    return envs["SITE_ID"];
 }
 export async function addMatomoTracking() {
     // already generated script, return
