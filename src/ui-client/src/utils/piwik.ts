@@ -52,4 +52,3 @@ export async function addMatomoTracking() {
     g.setAttribute("id", "matomoScript");
     headElement.appendChild(g);
   }
-  
