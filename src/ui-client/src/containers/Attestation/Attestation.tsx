@@ -151,7 +151,6 @@ class Attestation extends React.PureComponent<Props, State> {
                     <div className={`${c}-leaf-logo-wrapper`}>
                         <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_dark.png'} />
                         <div className={`${c}-title`}>
-                            {/* leaf */}
                             <span className={`${c}-leaf-version`}>v{pkg.version}</span>
                         </div>
                     </div>
