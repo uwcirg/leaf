@@ -21,6 +21,7 @@ export async function fetchEnvData(): Promise<any> {
         if (results[1].value) {
             returnResults = {
                 ...returnResults,
+                // user auth/context info will be under the `user` key
                 user: results[1].value
             }
         }

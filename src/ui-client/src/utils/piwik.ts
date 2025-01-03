@@ -34,6 +34,7 @@ export async function addMatomoTracking() {
     // no site Id return
     if (!siteId) return;
     // init global piwik tracking object
+    // note this will only be executed if BOTH userId and siteId are present
     window._paq = [];
     window._paq.push(["trackPageView"]);
     window._paq.push(["enableLinkTracking"]);
