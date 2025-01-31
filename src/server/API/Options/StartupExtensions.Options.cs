@@ -491,7 +491,7 @@ namespace API.Options
                 opts.SessionTimeoutMinutes = auth.SessionTimeoutMinutes;
                 opts.InactiveTimeoutMinutes = auth.InactiveTimeoutMinutes;
                 opts.Logout.Enabled = auth.Logout.Enabled;
-                opts.Logout.URI = LogoutUri;
+                opts.Logout.URI = new Uri(LogoutUri);
             });
 
             switch (auth.Mechanism)
