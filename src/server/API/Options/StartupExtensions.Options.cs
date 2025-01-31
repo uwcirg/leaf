@@ -538,7 +538,7 @@ namespace API.Options
                 }
                 auth.SessionTimeoutMinutes = session;
 
-                if (!config.TryGetValue<string>(Config.Authentication.Logout.URI, out var logout))
+                if (!config.TryGetByProxy(Config.Authentication.Logout.URI, out var logout))
                 {
                     if (!auth.IsUnsecured)
                     {
@@ -548,7 +548,6 @@ namespace API.Options
                 auth.Logout.Enabled = config.GetValue<bool>(Config.Authentication.Logout.Enabled);
                 if (auth.Logout.Enabled && !string.IsNullOrWhiteSpace(logout))
                 {
-                    logout = config.GetByProxy(Config.Authentication.Logout.URI);
                     auth.Logout.URI = new Uri(logout);
                 }
 
