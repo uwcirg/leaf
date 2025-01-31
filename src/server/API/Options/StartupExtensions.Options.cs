@@ -548,6 +548,7 @@ namespace API.Options
                 auth.Logout.Enabled = config.GetValue<bool>(Config.Authentication.Logout.Enabled);
                 if (auth.Logout.Enabled && !string.IsNullOrWhiteSpace(logout))
                 {
+                    logout = config.GetByProxy(Config.Authentication.Logout.URI);
                     auth.Logout.URI = new Uri(logout);
                 }
 
