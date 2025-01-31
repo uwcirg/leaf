@@ -483,6 +483,7 @@ namespace API.Options
         static IServiceCollection ConfigureAuthenticationOptions(this IServiceCollection services, IConfiguration config)
         {
             var auth = GetAuthenticationOptions(config);
+            var LogoutUri = config.GetByProxy(Config.Authentication.Logout.URI);
 
             services.Configure<AuthenticationOptions>(opts =>
             {
@@ -490,7 +491,7 @@ namespace API.Options
                 opts.SessionTimeoutMinutes = auth.SessionTimeoutMinutes;
                 opts.InactiveTimeoutMinutes = auth.InactiveTimeoutMinutes;
                 opts.Logout.Enabled = auth.Logout.Enabled;
-                opts.Logout.URI = config.GetByProxy(auth.Logout.URI);
+                opts.Logout.URI = LogoutUri;
             });
 
             switch (auth.Mechanism)
