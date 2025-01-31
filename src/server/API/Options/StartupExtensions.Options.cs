@@ -490,7 +490,7 @@ namespace API.Options
                 opts.SessionTimeoutMinutes = auth.SessionTimeoutMinutes;
                 opts.InactiveTimeoutMinutes = auth.InactiveTimeoutMinutes;
                 opts.Logout.Enabled = auth.Logout.Enabled;
-                opts.Logout.URI = auth.Logout.URI;
+                opts.Logout.URI = config.GetByProxy(auth.Logout.URI);
             });
 
             switch (auth.Mechanism)
