@@ -66,6 +66,7 @@ class Attestation extends React.PureComponent<Props, State> {
 
     constructor(props: Props) {
         super(props);
+        const {config} = props;
         this.state = {
             attestation: {
                 documentation: this.defaultDocumentation,
@@ -73,11 +74,11 @@ class Attestation extends React.PureComponent<Props, State> {
                 sessionType: SessionType.Research
             },
             documentationExpDateString: '',
-            documentationStatusSelected: false,
+            documentationStatusSelected: !config?.attestation?.documentStatusSelectionRequired,
             hasApprovedIrb: false,
             hasApprovedQi: false,
-            identificationTypeSelected: false,
-            sessionTypeSelected: false
+            identificationTypeSelected: !config?.attestation?.identificationTypeRequired,
+            sessionTypeSelected: SessionType.Research
         }
     }
 
@@ -154,12 +155,15 @@ class Attestation extends React.PureComponent<Props, State> {
                             <span className={`${c}-leaf-version`}>v{pkg.version}</span>
                         </div>
                     </div>
-                    <div className={`${c}-iths-logo-wrapper`}>
+                    <div className={`${c}-nida-logo-wrapper`}>
+                        <img alt='nida-logo' className={`${c}-nida-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/nida.svg'} />
+                    </div>
+                    {/* <div className={`${c}-iths-logo-wrapper`}>
                         <img alt='iths-logo' className={`${c}-iths-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/iths.png'} />
                     </div>
                     <div className={`${c}-cd2h-logo-wrapper`}>
                         <img alt='cd2h-logo' className={`${c}-cd2h-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/cd2h.png'} />
-                    </div>
+                    </div> */}
 
                     {/* Optional instance logo row */}
                     {config && config.attestation.credits.enabled &&
@@ -184,11 +188,14 @@ class Attestation extends React.PureComponent<Props, State> {
                 </ModalHeader>
 
                 <div className={progressBarClasses.join(' ')} style={{ width: `${sessionLoadProgressPercent}%` }} />
-                {userContext && !userContext.isPhiOkay && 
+                {/* {userContext && !userContext.isPhiOkay && 
                 <div className={`${c}-deidentonly`}>
                     <p>Participant data restricted to De-Identified mode only</p>
                 </div>
-                }
+                } */}
+                <div className={`${c}-deidentonly`}>
+                    <p>Participant data restricted to De-Identified mode only</p>
+                </div>
                 <ModalBody className={`${c}-body`}>
                     {auth.error && 
                     <div className={`${c}-error-text`}>
