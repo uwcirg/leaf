@@ -181,10 +181,10 @@ class Attestation extends React.PureComponent<Props, State> {
                 </ModalHeader>
 
                 <div className={progressBarClasses.join(' ')} style={{ width: `${sessionLoadProgressPercent}%` }} />
-                {(userContext && !userContext.isPhiOkay) && 
-                    <div className={`${c}-deidentonly`}>
-                        <p>Participant data restricted to De-Identified mode only</p>
-                    </div>
+                {userContext && !userContext.isPhiOkay && 
+                <div className={`${c}-deidentonly`}>
+                    <p>Participant data restricted to De-Identified mode only</p>
+                </div>
                 }
                 <ModalBody className={`${c}-body`}>
                     {auth.error && 
