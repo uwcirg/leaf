@@ -33,12 +33,13 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
         const phiDisplay = isIdentified ? 'Identified' : 'Deidentified';
         const showText = config && config.attestation.enabled;
         const useHtml = config.attestation.type && config.attestation.type === CustomAttestationType.Html;
+        const skipModeSelection = config && config.attestation.skipModeSelection;
 
         return  (
             <div className={confirmationClass}>
                  <div>
 
-                    {/* Else use custom text */}
+                    {/* use custom text */}
                     {useHtml &&
                         <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
                     }
@@ -59,14 +60,14 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                             {useDisplay} - {phiDisplay}
                         </Col> */}
                         {!(isSubmittingAttestation || hasAttested) &&
-                        <Col md={config && config.attestation.skipModeSelection ? 12: 6} className={`${config && config.attestation.skipModeSelection ? "" : "right"}`}>
+                        <Col md={skipModeSelection ? 12: 6} className={`${skipModeSelection ? "" : "right"}`}>
                             <Button 
                                 onClick={handleIAgreeClick} 
                                 tabIndex={-1}
                                 className="leaf-button leaf-button-primary">
                                 Access the Data Exploration Tool
                             </Button>
-                            {config && !config.attestation.skipModeSelection &&
+                            {!skipModeSelection &&
                             <Button 
                                 onClick={handleGoBackClick} 
                                 tabIndex={-1}
