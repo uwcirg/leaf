@@ -26,15 +26,15 @@ interface Props {
 export default class StandardAttestationConfirmation extends React.PureComponent<Props> {
     public render() {
         const c = this.props.className;
-        const { show, handleIAgreeClick, sessionLoadDisplay, hasAttested, isSubmittingAttestation, config } = this.props;
+        const { show, handleGoBackClick, handleIAgreeClick, isIdentified, sessionType, sessionLoadDisplay, hasAttested, isSubmittingAttestation, config } = this.props;
         const confirmationClass = `${c}-confirmation-container ${show ? 'show' : ''}`
-       // const useDisplay = sessionType === SessionType.Research ? 'Research' : 'Quality Improvement';
-       // const phiDisplay = isIdentified ? 'Identified' : 'Deidentified';
+        const useDisplay = sessionType === SessionType.Research ? 'Research' : 'Quality Improvement';
+        const phiDisplay = isIdentified ? 'Identified' : 'Deidentified';
         const showText = config && config.attestation.enabled;
 
         return  (
             <div className={confirmationClass}>
-                {/* {showText && [
+                {showText && [
                 <div className={`${c}-confirmation-settings`} key='1'>
                     {useDisplay} - {phiDisplay}
                 </div>,
@@ -42,25 +42,23 @@ export default class StandardAttestationConfirmation extends React.PureComponent
                     I attest that the information I have entered is accurate and I will
                     use the application, Leaf, as I have indicated.
                 </p>
-                ]} */}
-                {/* make this text configurable, maybe need to modify the model include this custom text, see  https://github.com/uwcirg/leaf/blob/master/src/server/Model/Options/AttestationOptions.cs */}
-                <p>HIV Success uses Leaf, a self-service tool which provides a user-friendly interface to execute queries and retrieve information about study data.</p>
+                ]}
                 {!(isSubmittingAttestation || hasAttested) &&
                 <div className={`${c}-confirmation-footer`}>
-                    {/* {config && !config.attestation.skipModeSelection &&
+                    {config && !config.attestation.skipModeSelection &&
                     <Button 
                         onClick={handleGoBackClick} 
                         tabIndex={-1}
                         className="leaf-button mr-auto">
                         Go Back
                     </Button>
-                    } */}
+                    }
                     <Button 
                         onClick={handleIAgreeClick} 
                         tabIndex={-1}
                         className="leaf-button leaf-button-primary" 
-                    >
-                        Access the Data Exploration Tool
+                        style={{ float: 'right' }}>
+                        I Agree
                     </Button>
                 </div>
                 }
