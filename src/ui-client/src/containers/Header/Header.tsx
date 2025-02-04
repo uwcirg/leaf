@@ -90,7 +90,6 @@ class Header extends React.PureComponent<Props> {
                             federated={responders.size > 1}
                             imports={importState}
                             helpClickHandler={this.handleGetHelpClick}
-                            //logoutClickHandler={this.handleLogoutClick} 
                             myLeafModalToggleHandler={this.handleMyleafModalToggleClick}
                             user={user} 
                         />

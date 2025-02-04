@@ -9,7 +9,6 @@ import React from 'react';
 import { Button, Row, Col } from 'reactstrap';
 import { SessionType } from '../../models/Session'
 import { AppConfig, CustomAttestationType } from '../../models/Auth';
-import TextareaAutosize from 'react-textarea-autosize';
 
 interface Props {
     config?: AppConfig;
@@ -34,6 +33,9 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
         const showText = config && config.attestation.enabled;
         const useHtml = config.attestation.type && config.attestation.type === CustomAttestationType.Html;
         const skipModeSelection = config && config.attestation.skipModeSelection;
+        const nextButtonContainerColSize = skipModeSelection ? 12: 6;
+        const nextButtonContainerClass = skipModeSelection ? "" : "right";
+        const nextButtonText = skipModeSelection ? "Access the Data Exploration Tool" : "I Agree";
 
         return  (
             <div className={confirmationClass}>
@@ -56,16 +58,17 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                 
                 <div>
                     <Row className={`${c}-confirmation-settings`} key='1'>
-                        {/* <Col md={6} className="left">
+                        {!skipModeSelection && 
+                        <Col md={6} className="left">
                             {useDisplay} - {phiDisplay}
-                        </Col> */}
+                        </Col>}
                         {!(isSubmittingAttestation || hasAttested) &&
-                        <Col md={skipModeSelection ? 12: 6} className={`${skipModeSelection ? "" : "right"}`}>
+                        <Col md={nextButtonContainerColSize} className={nextButtonContainerClass}>
                             <Button 
                                 onClick={handleIAgreeClick} 
                                 tabIndex={-1}
                                 className="leaf-button leaf-button-primary">
-                                Access the Data Exploration Tool
+                                {nextButtonText}
                             </Button>
                             {!skipModeSelection &&
                             <Button 
