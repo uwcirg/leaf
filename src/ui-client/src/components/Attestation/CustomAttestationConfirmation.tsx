@@ -36,20 +36,35 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
 
         return  (
             <div className={confirmationClass}>
+                 <div>
+
+                    {/* Else use custom text */}
+                    {useHtml &&
+                        <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
+                    }
+
+                    {!useHtml &&
+                        <div className={`${c}-custom-text-container`}>
+                            {config.attestation.text.map((t,i) => {
+                                return <p key={i} className={`${c}-custom-text`}>{t}</p>;
+                            })}
+                        </div>
+                    }
+                </div>
                 {showText &&
                 
                 <div>
                     <Row className={`${c}-confirmation-settings`} key='1'>
-                        <Col md={6} className="left">
+                        {/* <Col md={6} className="left">
                             {useDisplay} - {phiDisplay}
-                        </Col>
+                        </Col> */}
                         {!(isSubmittingAttestation || hasAttested) &&
-                        <Col md={6} className="right">
+                        <Col md={config && config.attestation.skipModeSelection ? 12: 6} className={`${config && config.attestation.skipModeSelection ? "" : "right"}`}>
                             <Button 
                                 onClick={handleIAgreeClick} 
                                 tabIndex={-1}
                                 className="leaf-button leaf-button-primary">
-                                I Agree
+                                Access the Data Exploration Tool
                             </Button>
                             {config && !config.attestation.skipModeSelection &&
                             <Button 
@@ -71,22 +86,6 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                         </Col>
                         }
                     </Row>
-
-                    <div>
-
-                        {/* Else use custom text */}
-                        {useHtml &&
-                        <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
-                        }
-
-                        {!useHtml &&
-                        <div className={`${c}-custom-text-container`}>
-                            {config.attestation.text.map((t,i) => {
-                                return <TextareaAutosize key={i} className={`${c}-custom-text`} defaultValue={t} readOnly={true} />;
-                            })}
-                        </div>
-                        }
-                    </div>
                 </div>
                 }
             </div>

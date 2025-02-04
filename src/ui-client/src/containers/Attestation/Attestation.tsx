@@ -74,11 +74,11 @@ class Attestation extends React.PureComponent<Props, State> {
                 sessionType: SessionType.Research
             },
             documentationExpDateString: '',
-            documentationStatusSelected: !config?.attestation?.documentStatusSelectionRequired,
+            documentationStatusSelected: false,
             hasApprovedIrb: false,
             hasApprovedQi: false,
-            identificationTypeSelected: !config?.attestation?.identificationTypeRequired,
-            sessionTypeSelected: SessionType.Research
+            identificationTypeSelected: false,
+            sessionTypeSelected: false
         }
     }
 
