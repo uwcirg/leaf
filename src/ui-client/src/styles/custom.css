@@ -153,10 +153,11 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
     margin-left: 4px;
     font-size: 2rem;
 }
-.attestation-confirmation-settings {
+.attestation-confirmation-settings.custom,
+.attestation-session-load-display-container.custom {
     text-align: center;
 }
-.attestation-confirmation-settings button {
+.attestation-confirmation-settings.custom button {
     font-size: 1.4rem;
 }
 .attestation-nida-logo {

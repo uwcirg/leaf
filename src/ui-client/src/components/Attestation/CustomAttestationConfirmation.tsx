@@ -39,8 +39,11 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
 
         return  (
             <div className={confirmationClass}>
+                  {!skipModeSelection && 
+                        <div  className={`${c}-confirmation-settings left`}>
+                            {useDisplay} - {phiDisplay}
+                        </div>}
                  <div>
-
                     {/* use custom text */}
                     {useHtml &&
                         <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
@@ -55,21 +58,18 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                     }
                 </div>
                 {showText &&
+                <div className={`${c}-confirmation-settings`} key='1'>
+                    <Row className={`${c}-confirmation-settings custom`} key='1'>
                 
-                <div>
-                    <Row className={`${c}-confirmation-settings`} key='1'>
-                        {!skipModeSelection && 
-                        <Col md={6} className="left">
-                            {useDisplay} - {phiDisplay}
-                        </Col>}
                         {!(isSubmittingAttestation || hasAttested) &&
-                        <Col md={nextButtonContainerColSize} className={nextButtonContainerClass}>
+                        <Col md={12}>
                             <Button 
                                 onClick={handleIAgreeClick} 
                                 tabIndex={-1}
                                 className="leaf-button leaf-button-primary">
                                 {nextButtonText}
                             </Button>
+                            {" "}
                             {!skipModeSelection &&
                             <Button 
                                 onClick={handleGoBackClick} 
@@ -81,8 +81,8 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                         </Col>
                         }
                         {(isSubmittingAttestation || hasAttested) &&
-                        <Col md={6} className="right">
-                            <div className={`${c}-session-load-display-container`}>
+                        <Col md={12}>
+                            <div className={`${c}-session-load-display-container custom`}>
                                 <div className={`${c}-session-load-display`}>
                                     <span>...{sessionLoadDisplay}</span>
                                 </div>
