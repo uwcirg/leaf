@@ -128,14 +128,43 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
 }
 
 /* Attestation modal */
+.attestation-footer-text .logo {
+    margin: -4px 0 4px;
+}
 .attestation-leaf-logo {
     border-radius: 0;
+}
+.attestation-modal-wrap .modal-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.attestation-modal-wrap .attestation-leaf-logo-wrapper {
+    flex: 3;
+    margin-top: 8px;
+}
+.attestation-modal-wrap .attestation-nida-logo-wrapper {
+    flex: 1;
+}
+.attestation-modal-wrap .attestation-nida-logo-wrapper img {
+    height: 48px;
 }
 .attestation-modal-wrap .attestation-title {
     margin-left: 4px;
     font-size: 2rem;
 }
-
+.attestation-confirmation-settings.custom,
+.attestation-session-load-display-container.custom {
+    text-align: center;
+}
+.attestation-confirmation-settings.custom button {
+    font-size: 1.4rem;
+}
+.attestation-nida-logo {
+    height: 56px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+}
 /* Visualize */
 .visualization-no-data-container {
     color: #777;

@@ -154,11 +154,8 @@ class Attestation extends React.PureComponent<Props, State> {
                             <span className={`${c}-leaf-version`}>v{pkg.version}</span>
                         </div>
                     </div>
-                    <div className={`${c}-iths-logo-wrapper`}>
-                        <img alt='iths-logo' className={`${c}-iths-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/iths.png'} />
-                    </div>
-                    <div className={`${c}-cd2h-logo-wrapper`}>
-                        <img alt='cd2h-logo' className={`${c}-cd2h-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/cd2h.png'} />
+                    <div className={`${c}-nida-logo-wrapper`}>
+                        <img alt='nida-logo' className={`${c}-nida-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/nida.svg'} />
                     </div>
 
                     {/* Optional instance logo row */}
@@ -184,11 +181,9 @@ class Attestation extends React.PureComponent<Props, State> {
                 </ModalHeader>
 
                 <div className={progressBarClasses.join(' ')} style={{ width: `${sessionLoadProgressPercent}%` }} />
-                {userContext && !userContext.isPhiOkay && 
                 <div className={`${c}-deidentonly`}>
                     <p>Participant data restricted to De-Identified mode only</p>
                 </div>
-                }
                 <ModalBody className={`${c}-body`}>
                     {auth.error && 
                     <div className={`${c}-error-text`}>

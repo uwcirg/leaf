@@ -24,6 +24,7 @@ import { getPanelItemCount } from '../../utils/panelUtils';
 import { logout } from '../../actions/session';
 import NewQueryButton from '../../components/Header/NewQueryButton';
 import DatabasesButton from '../../components/Header/DatabasesButton';
+import LogoutButton from '../../components/Header/LogoutButton';
 import UserButton from '../../components/Header/UserButton';
 import ImportButton from '../../components/Header/ImportButton';
 import ImportState from '../../models/state/Import';
@@ -89,11 +90,14 @@ class Header extends React.PureComponent<Props> {
                             federated={responders.size > 1}
                             imports={importState}
                             helpClickHandler={this.handleGetHelpClick}
-                            logoutClickHandler={this.handleLogoutClick} 
                             myLeafModalToggleHandler={this.handleMyleafModalToggleClick}
                             user={user} 
                         />
-
+                        {/* Logout */}
+                        <LogoutButton
+                            auth={auth}
+                            logoutClickHandler={this.handleLogoutClick}
+                        ></LogoutButton>
                     </Nav>
                 </div>
             </Navbar>

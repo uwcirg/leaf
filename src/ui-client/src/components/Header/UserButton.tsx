@@ -8,7 +8,7 @@
 import React from 'react';
 import { NavItem } from 'reactstrap';
 import { FiUser, FiUserCheck, FiShield, FiGlobe, FiAlertOctagon, FiUsers, FiHelpCircle } from 'react-icons/fi';
-import { FaChevronDown, FaStar, FaDoorOpen } from 'react-icons/fa';
+import { FaChevronDown, FaStar } from 'react-icons/fa';
 import { UserContext } from '../../models/Auth';
 import ImportState from '../../models/state/Import';
 import { MyLeafTabType } from '../../models/state/GeneralUiState';
@@ -122,12 +122,6 @@ export default class UserButton extends React.PureComponent<Props> {
 
                         <div className={`${c}-option-divider`} />
 
-                        {auth && auth.config && auth.config.authentication.logout.enabled && 
-                        <div className={`${c}-option ${c}-option-logout`} onClick={logoutClickHandler}>
-                            <FaDoorOpen className="myleaf-menu-icon myleaf-menu-icon-logout" />
-                            <span>Log Out</span>
-                        </div>
-                        }
                     </div>
                 </div>
             </NavItem>

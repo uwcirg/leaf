@@ -9,7 +9,6 @@ import React from 'react';
 import { Button, Row, Col } from 'reactstrap';
 import { SessionType } from '../../models/Session'
 import { AppConfig, CustomAttestationType } from '../../models/Auth';
-import TextareaAutosize from 'react-textarea-autosize';
 
 interface Props {
     config?: AppConfig;
@@ -33,25 +32,45 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
         const phiDisplay = isIdentified ? 'Identified' : 'Deidentified';
         const showText = config && config.attestation.enabled;
         const useHtml = config.attestation.type && config.attestation.type === CustomAttestationType.Html;
+        const skipModeSelection = config && config.attestation.skipModeSelection;
+        const nextButtonContainerColSize = skipModeSelection ? 12: 6;
+        const nextButtonContainerClass = skipModeSelection ? "" : "right";
+        const nextButtonText = skipModeSelection ? "Access the Data Exploration Tool" : "I Agree";
 
         return  (
             <div className={confirmationClass}>
-                {showText &&
-                
-                <div>
-                    <Row className={`${c}-confirmation-settings`} key='1'>
-                        <Col md={6} className="left">
+                  {!skipModeSelection && 
+                        <div  className={`${c}-confirmation-settings left`}>
                             {useDisplay} - {phiDisplay}
-                        </Col>
+                        </div>}
+                 <div>
+                    {/* use custom text */}
+                    {useHtml &&
+                        <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
+                    }
+
+                    {!useHtml &&
+                        <div className={`${c}-custom-text-container`}>
+                            {config.attestation.text.map((t,i) => {
+                                return <p key={i} className={`${c}-custom-text`}>{t}</p>;
+                            })}
+                        </div>
+                    }
+                </div>
+                {showText &&
+                <div className={`${c}-confirmation-settings`} key='1'>
+                    <Row className={`${c}-confirmation-settings custom`} key='1'>
+                
                         {!(isSubmittingAttestation || hasAttested) &&
-                        <Col md={6} className="right">
+                        <Col md={12}>
                             <Button 
                                 onClick={handleIAgreeClick} 
                                 tabIndex={-1}
                                 className="leaf-button leaf-button-primary">
-                                I Agree
+                                {nextButtonText}
                             </Button>
-                            {config && !config.attestation.skipModeSelection &&
+                            {" "}
+                            {!skipModeSelection &&
                             <Button 
                                 onClick={handleGoBackClick} 
                                 tabIndex={-1}
@@ -62,8 +81,8 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                         </Col>
                         }
                         {(isSubmittingAttestation || hasAttested) &&
-                        <Col md={6} className="right">
-                            <div className={`${c}-session-load-display-container`}>
+                        <Col md={12}>
+                            <div className={`${c}-session-load-display-container custom`}>
                                 <div className={`${c}-session-load-display`}>
                                     <span>...{sessionLoadDisplay}</span>
                                 </div>
@@ -71,22 +90,6 @@ export default class CustomAttestationConfirmation extends React.PureComponent<P
                         </Col>
                         }
                     </Row>
-
-                    <div>
-
-                        {/* Else use custom text */}
-                        {useHtml &&
-                        <div className={`${c}-custom-html`} dangerouslySetInnerHTML={ {__html: config.attestation.text.join("")} }></div>
-                        }
-
-                        {!useHtml &&
-                        <div className={`${c}-custom-text-container`}>
-                            {config.attestation.text.map((t,i) => {
-                                return <TextareaAutosize key={i} className={`${c}-custom-text`} defaultValue={t} readOnly={true} />;
-                            })}
-                        </div>
-                        }
-                    </div>
                 </div>
                 }
             </div>
