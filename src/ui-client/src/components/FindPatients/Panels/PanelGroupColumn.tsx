@@ -98,6 +98,11 @@ class PanelGroupColumn extends React.Component<Props> {
         }
     }
 
+    public renderQueryInfo(queryState : string) {
+        if (queryState !== CohortStateType.NOT_LOADED) return null;
+        return <div className="text-muted text-center mb-1">( To query, drag and drop concepts into boxes below )</div>
+    }
+
     public render() {
         const { dispatch, panels, panelFilters, queryState } = this.props;
         return (
@@ -107,6 +112,7 @@ class PanelGroupColumn extends React.Component<Props> {
                         <span>{this.setRunQueryButtonContent()}</span>
                     </div>
                 </div>
+                {this.renderQueryInfo(queryState)}
                 <PanelFilterGroup dispatch={dispatch} filters={panelFilters} />
                 <PanelGroup dispatch={dispatch} panels={panels} queryState={queryState} />
             </div>
