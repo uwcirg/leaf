@@ -151,9 +151,15 @@ export default class ConceptSearchBox extends React.PureComponent<Props, State> 
                         }
                     </div>
                 </InputGroup>
+                {this.renderQueryInfo()}
             </div>
         )
     }
+
+    public renderQueryInfo() {
+        return <div className="text-muted mt-4 ml-4">( To query, drag and drop concepts into boxes to the right )</div>
+    }
+
 
     private toggleRootsDropdown = () => {
         this.setState({ showRootsDropdown: !this.state.showRootsDropdown });
