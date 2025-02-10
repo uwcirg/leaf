@@ -10,11 +10,8 @@ export function getUserIdFromEnv(config) : number | string | null {
     return null;
 }
 // get PIWIK siteId from environment variable
-export function getMatomoSiteIdFromEnv(config) : number | null{
-    if (!config) return null;
-    const envs = config.client ? config.client: config;
-    // appsettings.json {client: .....}
-    // env.json
+export function getMatomoSiteIdFromEnv(envs) : number | null{
+    if (!envs) return null;
     if (envs["REACT_APP_MATOMO_SITE_ID"]) return envs["REACT_APP_MATOMO_SITE_ID"];
     if (envs["MATOMO_SITE_ID"]) return envs["MATOMO_SITE_ID"];
     if (envs["REACT_APP_PIWIK_SITE_ID"]) return envs["REACT_APP_PIWIK_SITE_ID"];
