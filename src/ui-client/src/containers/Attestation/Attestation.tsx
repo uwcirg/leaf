@@ -99,7 +99,7 @@ class Attestation extends React.PureComponent<Props, State> {
                     sessionTypeSelected: true, 
                     documentationStatusSelected: true, 
                     identificationTypeSelected: true,
-                    attestation: { ...this.state.attestation, isIdentified: !config.cohort.deidentificationEnabled }
+                    attestation: { ...this.state.attestation, isIdentified: false }
                 });
             }
         }
