@@ -25,6 +25,7 @@ import CustomAttestationConfirmation from '../../components/Attestation/CustomAt
 import StandardAttestationConfirmation from '../../components/Attestation/StandardAttestationConfirmation';
 import { ServerState } from '../../models/state/ServerState';
 import { IoMdConstruct } from 'react-icons/io';
+import {getLogoPath} from '../../utils/helpers';
 import './Attestation.css';
 
 interface DispatchProps {
@@ -135,7 +136,7 @@ class Attestation extends React.PureComponent<Props, State> {
                 progressBarClasses.push('slow');
             }
         }
-        
+        const logoPath = getLogoPath();
         return (
             <Modal 
                 backdrop={true}
@@ -149,9 +150,11 @@ class Attestation extends React.PureComponent<Props, State> {
 
                     {/* Top logo row (Leaf, ITHS, CD2H) */}
                     <div className={`${c}-leaf-logo-wrapper`}>
-                        <div>
-                            <img alt="site-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_dark.png'} />
-                        </div>
+                        {
+                            logoPath && <div>
+                                            <img alt="site-logo" className="logo" src={logoPath + '/logo_dark.png'} />
+                                        </div>
+                        }
                         <div className={`${c}-title`}>
                             <span className="text">powered by Leaf</span>
                             <span><img alt="leaf-logo" src={process.env.PUBLIC_URL + '/images/logos/apps/leaf.svg'}></img></span>

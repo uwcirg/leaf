@@ -9,6 +9,9 @@
 #header-container .logo {
     height: 52px;
     margin: 0;
+    &.default {
+        height: 40px;
+    }
 }
 .header-content-side .header-title {
  
