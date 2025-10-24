@@ -10,3 +10,8 @@ export function getLogoPath() {
     );
   return "";
 }
+export function shouldShowNIDALogo() {
+  const siteId = getSiteId();
+  if (!siteId) return true;
+  return String(siteId).toLowerCase() === "hiv_success";
+}
