@@ -28,6 +28,7 @@ import LogoutButton from '../../components/Header/LogoutButton';
 import UserButton from '../../components/Header/UserButton';
 import ImportButton from '../../components/Header/ImportButton';
 import ImportState from '../../models/state/Import';
+import {getLogoPath} from '../../utils/helpers';
 import './Header.css';
 
 interface OwnProps {}
@@ -52,13 +53,14 @@ class Header extends React.PureComponent<Props> {
     public render() {
         const { auth, user, responders, dispatch, queryState, importState } = this.props;
         const c = 'header';
+        const logoPath = getLogoPath();
 
         return (
             <Navbar id={`${c}-container`} className="d-flex justify-content-between mb-3">
                 <div className={`${c}-content-side`}>
                     <div className={`${c}-title`} >
-                        <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_light.png'} />
-                        {/* <div className="title">leaf</div> */}
+                        {logoPath && <img alt="leaf-logo" className="logo" src={logoPath + '/logo_light.png'} />}
+                        {!logoPath && <img className="logo default" src={process.env.PUBLIC_URL + `/images/logos/apps/leaf.svg`}></img>}
                     </div>
                 </div>
                 <div className="mx-auto">

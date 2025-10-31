@@ -25,6 +25,7 @@ import CustomAttestationConfirmation from '../../components/Attestation/CustomAt
 import StandardAttestationConfirmation from '../../components/Attestation/StandardAttestationConfirmation';
 import { ServerState } from '../../models/state/ServerState';
 import { IoMdConstruct } from 'react-icons/io';
+import {getLogoPath, shouldShowNIDALogo} from '../../utils/helpers';
 import './Attestation.css';
 
 interface DispatchProps {
@@ -135,7 +136,7 @@ class Attestation extends React.PureComponent<Props, State> {
                 progressBarClasses.push('slow');
             }
         }
-        
+        const logoPath = getLogoPath();
         return (
             <Modal 
                 backdrop={true}
@@ -149,14 +150,20 @@ class Attestation extends React.PureComponent<Props, State> {
 
                     {/* Top logo row (Leaf, ITHS, CD2H) */}
                     <div className={`${c}-leaf-logo-wrapper`}>
-                        <img alt="leaf-logo" className="logo" src={process.env.PUBLIC_URL + '/images/logos/apps/logo_dark.png'} />
+                        {
+                            logoPath && <div>
+                                            <img alt="site-logo" className="logo" src={logoPath + '/logo_dark.png'} />
+                                        </div>
+                        }
                         <div className={`${c}-title`}>
+                            <span className="text">powered by Leaf</span>
+                            <span><img alt="leaf-logo" src={process.env.PUBLIC_URL + '/images/logos/apps/leaf.svg'}></img></span>
                             <span className={`${c}-leaf-version`}>v{pkg.version}</span>
-                        </div>
+                        </div> 
                     </div>
-                    <div className={`${c}-nida-logo-wrapper`}>
+                    {shouldShowNIDALogo() && <div className={`${c}-nida-logo-wrapper`}>
                         <img alt='nida-logo' className={`${c}-nida-logo`} src={process.env.PUBLIC_URL + '/images/logos/orgs/nida.svg'} />
-                    </div>
+                    </div>}
 
                     {/* Optional instance logo row */}
                     {config && config.attestation.credits.enabled &&

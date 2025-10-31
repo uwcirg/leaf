@@ -48,7 +48,7 @@ export default class DatabasesButton extends React.PureComponent<Props> {
                 <div className={`${c}-option-container ${c}-networkhealth-container`}>
                     <div className={`${c}-option-inner`}>
                         <div className={`${c}-networkhealth-description`}>
-                            <span>Clinical databases available to query</span>
+                            <span>Databases available to query</span>
                         </div>
                         {resps.map((id: number) => (
                             <NetworkHealthResponder

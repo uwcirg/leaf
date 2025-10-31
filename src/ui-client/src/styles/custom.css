@@ -6,6 +6,13 @@
 #header-container .header-role:has(.header-role-icon-phi) {
     display: none;
 }
+#header-container .logo {
+    height: 52px;
+    margin: 0;
+    &.default {
+        height: 40px;
+    }
+}
 .header-content-side .header-title {
  
     /* Example
@@ -142,6 +149,11 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
 .attestation-modal-wrap .attestation-leaf-logo-wrapper {
     flex: 3;
     margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.attestation-modal-wrap .attestation-leaf-logo-wrapper .logo {
+    margin: 0;
 }
 .attestation-modal-wrap .attestation-nida-logo-wrapper {
     flex: 1;
@@ -151,7 +163,19 @@ button.concept-search-roots-dropdown-toggle.dropdown-toggle.btn.btn-secondary:ho
 }
 .attestation-modal-wrap .attestation-title {
     margin-left: 4px;
-    font-size: 2rem;
+    margin-top: 0;
+    font-size: 1rem;
+    color: rgb(8 165 100);
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.attestation-modal-wrap .attestation-title img {
+    height: 20px;
+}
+.attestation-leaf-version {
+    position: relative;
+    margin-bottom: 0;
 }
 .attestation-confirmation-settings.custom,
 .attestation-session-load-display-container.custom {
